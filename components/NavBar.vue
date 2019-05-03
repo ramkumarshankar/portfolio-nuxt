@@ -1,5 +1,5 @@
 <template>
-  <header :class="navFixed ? 'isFixed' : ''">
+  <header class="fixed">
     <nuxt-link to="/">
       <h1 class="site-title" :class="navTheme">Ramkumar Shankar</h1>
     </nuxt-link>
@@ -52,7 +52,7 @@ header {
   justify-content: space-between;
   z-index: 100;
 
-  &.isFixed {
+  &.fixed {
     position: absolute;
     left: 0;
     right: 0
