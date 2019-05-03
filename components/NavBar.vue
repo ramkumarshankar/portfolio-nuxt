@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed">
+  <header :class="navFixed ? 'fixed' : ''">
     <nuxt-link to="/">
       <h1 class="site-title" :class="navTheme">Ramkumar Shankar</h1>
     </nuxt-link>
