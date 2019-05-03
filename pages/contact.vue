@@ -6,10 +6,7 @@
 export default {
   name: 'Contact',
   asyncData(context) {
-    console.log(context);
-  },
-  created ()  {
-    console.log(this.$store)
+    //
   }
 }
 </script>
