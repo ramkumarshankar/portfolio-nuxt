@@ -1,4 +1,7 @@
+import Prismic from "prismic-javascript"
 import pkg from './package'
+
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -47,6 +50,20 @@ export default {
 
   styleResources: {
     stylus: './assets/styles/main.styl'
+  },
+
+  generate: {
+    routes: async () => {
+      const api = await Prismic.getApi("https://ramkumarshankar.cdn.prismic.io/api/v2", {
+        accessToken: process.env.API_ACCESS_KEY
+      })
+      const response = await api.query(Prismic.Predicates.at("document.type", "project"), {
+        // keep page size large to get all projects
+        pageSize: 100
+      });
+      const projects = response.results;
+      return projects.map(project => '/work/' + project.uid)
+    }
   },
 
   /*
