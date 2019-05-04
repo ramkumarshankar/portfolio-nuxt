@@ -1,6 +1,6 @@
 # portfolio
 
-> My pioneering Nuxt.js project
+> My portfolio, now in Nuxt
 
 ## Build Setup
 

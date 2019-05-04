@@ -1,4 +1,4 @@
-import Prismic from "prismic-javascript"
+import Prismic from 'prismic-javascript'
 import pkg from './package'
 
 require('dotenv').config()
@@ -46,10 +46,46 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/style-resources'],
+  modules: [
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/sitemap',
+    [
+      '@nuxtjs/robots',
+      {
+        UserAgent: '*',
+        Disallow: '/thanks'
+      }
+    ]
+  ],
 
   router: {
     middleware: 'navMenu'
+  },
+
+  sitemap: {
+    hostname: 'https://ramkumar.me',
+    gzip: true,
+    exclude: [
+      '/thanks'
+    ],
+    routes: async () => {
+      const api = await Prismic.getApi(
+        'https://ramkumarshankar.cdn.prismic.io/api/v2',
+        {
+          accessToken: process.env.API_ACCESS_KEY
+        }
+      )
+      const response = await api.query(
+        Prismic.Predicates.at('document.type', 'project'),
+        {
+          // keep page size large to get all projects
+          pageSize: 100
+        }
+      )
+      const projects = response.results
+      return projects.map(project => '/work/' + project.uid)
+    }
   },
 
   styleResources: {
@@ -58,14 +94,20 @@ export default {
 
   generate: {
     routes: async () => {
-      const api = await Prismic.getApi("https://ramkumarshankar.cdn.prismic.io/api/v2", {
-        accessToken: process.env.API_ACCESS_KEY
-      })
-      const response = await api.query(Prismic.Predicates.at("document.type", "project"), {
-        // keep page size large to get all projects
-        pageSize: 100
-      });
-      const projects = response.results;
+      const api = await Prismic.getApi(
+        'https://ramkumarshankar.cdn.prismic.io/api/v2',
+        {
+          accessToken: process.env.API_ACCESS_KEY
+        }
+      )
+      const response = await api.query(
+        Prismic.Predicates.at('document.type', 'project'),
+        {
+          // keep page size large to get all projects
+          pageSize: 100
+        }
+      )
+      const projects = response.results
       return projects.map(project => '/work/' + project.uid)
     }
   },
@@ -78,8 +120,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // Run ESLint on save
       config.resolve.alias['vue'] = 'vue/dist/vue.common'
+      // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
