@@ -19,6 +19,9 @@ import Tags from "@/components/Tags";
 
 export default {
   name: "ProjectTile",
+  components: {
+    Tags
+  },
   props: {
     title: String,
     description: String,
@@ -26,9 +29,6 @@ export default {
     image: Object,
     tags: Array,
     featured: Boolean
-  },
-  components: {
-    Tags
   }
 };
 </script>

@@ -12,7 +12,16 @@
 <script>
 export default {
   name: "TextSlice",
-  props: ["heading", "body"]
+  props: {
+    heading: {
+      type: String,
+      required: false
+    },
+    body: {
+      type: Array,
+      required: false
+    }
+  }
 };
 </script>
 

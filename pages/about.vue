@@ -37,7 +37,6 @@ export default {
         bodyText: bodyText
       };
     } catch (e) {
-      console.log(e)
       error({ statusCode: 404, message: 'Page not found' })
     }
   }

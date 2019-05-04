@@ -3,19 +3,19 @@
     <div class="footer-inner">
       <ul class="social-icons-list">
         <li>
-          <a class="socicon-twitter" v-bind:href="twitterLink"></a>
+          <a class="socicon-twitter" :href="twitterLink"></a>
         </li>
         <li>
-          <a class="socicon-facebook" v-bind:href="facebookLink"></a>
+          <a class="socicon-facebook" :href="facebookLink"></a>
         </li>
         <li>
-          <a class="socicon-linkedin" v-bind:href="linkedinLink"></a>
+          <a class="socicon-linkedin" :href="linkedinLink"></a>
         </li>
         <li>
-          <a class="socicon-dribbble" v-bind:href="dribbbleLink"></a>
+          <a class="socicon-dribbble" :href="dribbbleLink"></a>
         </li>
         <li>
-          <a class="socicon-github" v-bind:href="githubLink"></a>
+          <a class="socicon-github" :href="githubLink"></a>
         </li>
       </ul>
     </div>

@@ -61,7 +61,6 @@ export default {
         title: title
       }
     } catch (e) {
-      console.log(e)
       error({ statusCode: 404, message: 'Page not found' })
     }
   }

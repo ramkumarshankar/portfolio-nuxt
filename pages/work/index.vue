@@ -2,7 +2,7 @@
   <div class="work">
     <div class="container">
       <h1 class="page-headline">Work</h1>
-      <filter-menu v-on:filterChanged="resetFilter" :tags="tags"/>
+      <filter-menu :tags="tags" @filterChanged="resetFilter" />
       <section class="projects-section">
         <projects-grid :projects="displayedProjects"/>
       </section>
@@ -77,7 +77,6 @@ export default {
         selectedTag: "all"
       }
     } catch (e) {
-      console.log(e)
       error({ statusCode: 404, message: 'Page not found' })
     }
   },

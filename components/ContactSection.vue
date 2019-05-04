@@ -8,7 +8,12 @@
 <script>
 export default {
   name: "ContactSection",
-  props: ["text"]
+  props: {
+    text: {
+      type: Array,
+      required: false
+    }
+  }
 };
 </script>
 

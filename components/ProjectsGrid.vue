@@ -2,8 +2,8 @@
   <transition-group name="projectlist" class="projects" tag="div">
     <project-tile
       v-for="(item, index) in projects"
-      :featured="index === 0"
       :key="'project-item-' + index"
+      :featured="index === 0"
       :title="$prismic.richTextAsPlain(item.title)"
       :description="$prismic.richTextAsPlain(item.short_description)"
       :image="item.image"
@@ -18,15 +18,15 @@ import ProjectTile from "@/components/ProjectTile.vue";
 
 export default {
   name: "ProjectGrid",
+  components: {
+    ProjectTile
+  },
   props: {
     projects: {
       type: Array,
       required: true,
       default: () => []
     }
-  },
-  components: {
-    ProjectTile
   }
 };
 </script>

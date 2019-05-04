@@ -8,7 +8,16 @@
 <script>
 export default {
   name: "TeachingSection",
-  props: ["title", "body"]
+  props: {
+    title: {
+      type: String,
+      required: false
+    },
+    body: {
+      type: Array,
+      required: false
+    }
+  }
 };
 </script>
 

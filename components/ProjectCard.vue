@@ -21,7 +21,8 @@ export default {
     },
     projectCard: {
       type: Array,
-      required: false
+      required: false,
+      default: () => []
     }
   }
 };
