@@ -28,8 +28,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../styles/main.styl';
-
 .transparent {
   background: transparent;
 }

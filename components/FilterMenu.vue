@@ -44,8 +44,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../styles/main.styl';
-
 div.filterMenu {
   margin-bottom: 50px;
   ul {
