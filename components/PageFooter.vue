@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer :class="this.$route.name === 'thanks' ? 'fixed' : ''">
     <div class="footer-inner">
       <ul class="social-icons-list">
         <li>
@@ -40,6 +40,14 @@ export default {
 <style lang="stylus" scoped>
 footer {
   background-color: #1B1B1B;
+
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // width: 100%;
+  }
 
   div.footer-inner {
     background-color: #1B1B1B;
