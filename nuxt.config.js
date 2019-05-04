@@ -1,7 +1,5 @@
 import pkg from './package'
 
-const accessToken = 'MC5YQVo2V2hFQUFDMEFUMF9T.XO-_vXw4VO-_vVQ1be-_ve-_ve-_ve-_vSzvv71USFTvv70O77-977-9eu-_ve-_vUXvv73vv73vv73vv71aew'
-
 export default {
   mode: 'universal',
 
@@ -9,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'Ramkumar Shankar',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,26 +24,22 @@ export default {
   /*
    ** Global CSS
    */
-  css: [
-    'socicon',
-  ],
+  css: ['socicon'],
 
   /*
    ** Plugins to load before mounting the App
-   */  	
+   */
+
   plugins: [
     '~/plugins/prismic-api.js',
     '~/plugins/link-resolver.js',
-    '~/plugins/prismic-vue.js',
+    '~/plugins/prismic-vue.js'
   ],
 
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'
-  ],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/style-resources'],
 
   router: {
     middleware: 'navMenu'

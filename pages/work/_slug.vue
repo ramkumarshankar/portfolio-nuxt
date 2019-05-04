@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import prismicDOM from "prismic-dom"
 import ProjectCard from "@/components/ProjectCard.vue";
 import TextSlice from "@/components/TextSlice.vue";
 import VideoEmbed from "@/components/VideoEmbed.vue";
@@ -68,34 +69,11 @@ export default {
     TextSlice,
     VideoEmbed
   },
-  // metaInfo() {
-  //   return {
-  //     titleTemplate: "%s | Work | " + this.$prismic.richTextAsPlain(this.title),
-  //     meta: [
-  //       {
-  //         vmid: "og:title",
-  //         content: this.$prismic.richTextAsPlain(this.title)
-  //       },
-  //       {
-  //         vmid: "og:url",
-  //         content: "https://www.ramkumar.me" + this.$router.currentRoute.path
-  //       }
-  //     ]
-  //   };
-  // },
-  // data() {
-  //   return {
-  //     loading: false,
-  //     tags: "",
-  //     title: "",
-  //     description: "",
-  //     titleImage: null,
-  //     projectCard: [],
-  //     ctaTitle: null,
-  //     ctaLink: null,
-  //     slices: []
-  //   };
-  // },
+  head() {
+    return {
+      titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title)
+    }
+  },
   async asyncData({app, params, error, req}) {
     try {
       const result = await app.api.getByUID("project", params.slug)

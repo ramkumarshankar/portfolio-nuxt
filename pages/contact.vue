@@ -5,6 +5,11 @@
 <script>
 export default {
   name: 'Contact',
+  head() {
+    return {
+      titleTemplate: '%s | Contact'
+    }
+  },
   asyncData(context) {
     //
   }
