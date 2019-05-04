@@ -83,13 +83,18 @@ export default {
   },
   methods: {
     resetFilter(tag) {
-      this.selectedTag = tag;
-      this.activePage = 1;
-      if (this.selectedTag === 'all') {
-        this.displayedProjects = this.projects;
-      } else {
-        this.displayedProjects = this.projects.filter(project => {
-          return project.tags.includes(this.selectedTag)
+      if (this.selectedTag !== tag) {
+        this.selectedTag = tag;
+        this.activePage = 1;
+        this.displayedProjects = []
+        this.$nextTick(() => {
+          if (this.selectedTag === 'all') {
+            this.displayedProjects = this.projects;
+          } else {
+            this.displayedProjects = this.projects.filter(project => {
+              return project.tags.includes(this.selectedTag)
+            })
+          }
         })
       }
     },

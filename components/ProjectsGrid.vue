@@ -56,13 +56,17 @@ export default {
 }
 
 
-.projectlist-enter-active, .projectlist-leave-active {
-  transition: all 0.3s;
+.projectlist-enter-active {
+  transition: all 0.3s 0.2s;
+}
+
+.projectlist-leave-active {
+  transition: all 0.2s;
 }
 
 .projectlist-enter, .projectlist-leave-to {
   opacity: 0;
-  transform: scale3d(0.6, 0.6, 0.6);
+  transform: scale3d(0.8, 0.8, 0.8);
 }
 
 .projectlist-move {
