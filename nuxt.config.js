@@ -69,9 +69,7 @@ export default {
   sitemap: {
     hostname: 'https://ramkumar.me',
     gzip: true,
-    exclude: [
-      '/thanks'
-    ],
+    exclude: ['/thanks'],
     routes: async () => {
       const api = await Prismic.getApi(
         'https://ramkumarshankar.cdn.prismic.io/api/v2',
