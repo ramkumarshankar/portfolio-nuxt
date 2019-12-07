@@ -1,21 +1,32 @@
 <template>
   <footer :class="this.$route.name === 'thanks' ? 'fixed' : ''">
     <div class="footer-inner">
-      <ul class="social-icons-list">
+      <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank" class="footer-button"><span style="margin-right: 8px;">☕️</span>Buy me a coffee</a>
+      <ul class="icons-list">
         <li>
-          <a class="socicon-twitter" :href="twitterLink"></a>
+          <a :href="twitterLink">
+            <fa :icon="['fab', 'twitter']" />
+          </a>
         </li>
         <li>
-          <a class="socicon-facebook" :href="facebookLink"></a>
+          <a :href="facebookLink">
+            <fa :icon="['fab', 'facebook']" />
+          </a>
         </li>
         <li>
-          <a class="socicon-linkedin" :href="linkedinLink"></a>
+          <a :href="linkedinLink">
+            <fa :icon="['fab', 'linkedin']" />
+          </a>
         </li>
         <li>
-          <a class="socicon-dribbble" :href="dribbbleLink"></a>
+          <a :href="dribbbleLink">
+            <fa :icon="['fab', 'dribbble']" />
+          </a>
         </li>
         <li>
-          <a class="socicon-github" :href="githubLink"></a>
+          <a :href="githubLink">
+            <fa :icon="['fab', 'github']" />
+          </a>
         </li>
       </ul>
     </div>
@@ -46,7 +57,6 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    // width: 100%;
   }
 
   div.footer-inner {
@@ -54,9 +64,11 @@ footer {
     max-width: 960px;
     margin: auto;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
     z-index: 100;
+    padding: 30px 0px;
+    flex-wrap: wrap;
 
     @media screen and (max-width: 1024px) {
       width: 760px !important;
@@ -67,10 +79,9 @@ footer {
       padding-right: 1.5rem;
       width: 100% !important;
     }
-    ul.social-icons-list {
+    ul.icons-list {
       display: inline-block;
       list-style-type: none;
-      padding: 30px 0px;
 
       li {
         display: inline;

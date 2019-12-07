@@ -34,7 +34,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['socicon'],
+  css: [],
 
   /*
    ** Plugins to load before mounting the App
@@ -53,6 +53,15 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
+    ['nuxt-fontawesome', {
+      component: 'fa', 
+      imports: [
+        {
+          set: '@fortawesome/fontawesome-free-brands',
+          icons: ['faTwitter', 'faGithub', 'faFacebook', 'faDribbble', 'faLinkedin']
+        }
+      ]
+    }],
     [
       '@nuxtjs/robots',
       {
