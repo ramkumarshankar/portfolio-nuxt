@@ -68,24 +68,18 @@ export default class LandingCanvas {
     for (let i = 0; i < 20; i++) {
       this.circles.push(new Circle(this.canvasEl));
     }
-    // for (let i = 0; i < 10; i++) {
-    //   this.points.push(new Circle(this.canvasEl, "invisible"));
-    // }
   }
 
   onMouseMove(xPos, yPos) {
     this.mousePoint.set(xPos, yPos);
   }
 
-  onMouseOut(xPos, yPos) {
+  onMouseOut() {
     this.mousePoint.reset();
   }
 
   setup() {
     window.addEventListener("resize", this.resize.bind(this));
-    this.canvasEl.addEventListener("onmousemove", evt => {
-      //
-    });
   }
 
   update() {
