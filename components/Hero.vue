@@ -2,7 +2,7 @@
   <div class="hero-section">
     <canvas id="heroCanvas"></canvas>
     <div class="container">
-      <h1 class="page-headline">{{ headline }}</h1>
+      <h1 class="hero-headline">{{ headline }}</h1>
     </div>
   </div>
 </template>
@@ -41,7 +41,9 @@ export default {
   position: relative;
 }
 
-h1.page-headline {
+h1.hero-headline {
+  font-family: $base-heading-font-family-serif;
+  font-weight: 200;
   width: 70%;
   color: #FFF;
 
