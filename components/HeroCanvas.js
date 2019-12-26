@@ -10,13 +10,9 @@ class Circle {
       x: Math.random() * canvasEl.width,
       y: Math.random() * canvasEl.height
     };
-    if (type === "invisible") {
-      this.radius = 0;
-    } else {
-      this.radius = 10;
-      this.color =
-        circleColours[Math.floor(Math.random() * circleColours.length)];
-    }
+    this.radius = 10;
+    this.color =
+      circleColours[Math.floor(Math.random() * circleColours.length)];
   }
 
   update(canvasEl) {
@@ -40,47 +36,49 @@ class Circle {
   }
 }
 
+class MousePoint {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+  }
+
+  set(xPos, yPos) {
+    this.x = xPos * window.devicePixelRatio;
+    this.y = yPos * window.devicePixelRatio;
+  }
+
+  reset() {
+    this.x = 0;
+    this.y = 0;
+  }
+}
+
 export default class LandingCanvas {
   constructor(canvasEl) {
     this.backgroundColor = "#1B1B1B";
     this.canvasEl = canvasEl;
     this.ctx = this.canvasEl.getContext("2d");
     this.reqAnim = null;
-    this.mousePoint = {
-      position: {
-        x: 0,
-        y: 0
-      }
-    }
+    this.mousePoint = new MousePoint()
     this.generatePoints();
   }
 
   generatePoints() {
     this.circles = [];
-    this.points = [];
     for (let i = 0; i < 20; i++) {
       this.circles.push(new Circle(this.canvasEl));
     }
-    this.points.push(this.mousePoint)
     // for (let i = 0; i < 10; i++) {
     //   this.points.push(new Circle(this.canvasEl, "invisible"));
     // }
   }
 
   onMouseMove(xPos, yPos) {
-    // console.log('in canvas', xPos, yPos);
-    this.points[0].position = {
-      x: xPos * window.devicePixelRatio,
-      y: yPos * window.devicePixelRatio
-    }
+    this.mousePoint.set(xPos, yPos);
   }
 
   onMouseOut(xPos, yPos) {
-    // console.log('in canvas', xPos, yPos);
-    this.points[0].position = {
-      x: 0,
-      y: 0
-    }
+    this.mousePoint.reset();
   }
 
   setup() {
@@ -91,9 +89,6 @@ export default class LandingCanvas {
   }
 
   update() {
-    // for (let i = 0; i < this.points.length; i++) {
-    //   this.points[i].update(this.canvasEl);
-    // }
     for (let j = 0; j < this.circles.length; j++) {
       this.circles[j].update(this.canvasEl);
     }
@@ -106,21 +101,18 @@ export default class LandingCanvas {
       this.circles[i].draw(this.ctx);
     }
     // console.log(this.points[0].position.x)
-    for (let i = 0; i < this.points.length; i++) {
-      const point = this.points[i];
-      for (let j = 0; j < this.circles.length; j++) {
-        const circle = this.circles[j];
-        const distance = this.calculateDistance(point.position, circle.position);
-        // console.log(distance)
-        if (distance < 400) {
-          // console.log('stroke')
-          this.ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
-          this.ctx.beginPath();
-          this.ctx.moveTo(point.position.x, point.position.y);
-          this.ctx.lineTo(circle.position.x, circle.position.y);
-          this.ctx.closePath();
-          this.ctx.stroke();
-        }
+    for (let j = 0; j < this.circles.length; j++) {
+      const circle = this.circles[j];
+      const distance = this.calculateDistance(this.mousePoint, circle.position);
+      // console.log(distance)
+      if (distance < 400) {
+        // console.log('stroke')
+        this.ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.mousePoint.x, this.mousePoint.y);
+        this.ctx.lineTo(circle.position.x, circle.position.y);
+        this.ctx.closePath();
+        this.ctx.stroke();
       }
     }
     this.update();
