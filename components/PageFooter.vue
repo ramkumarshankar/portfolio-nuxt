@@ -80,12 +80,13 @@ footer {
       width: 100% !important;
     }
     ul.icons-list {
+      padding:10px 0px;
       display: inline-block;
       list-style-type: none;
 
       li {
         display: inline;
-        padding-left: 10px;
+        padding-right: 10px;
 
         a {
           text-decoration: none;

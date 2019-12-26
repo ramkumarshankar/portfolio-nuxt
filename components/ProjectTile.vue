@@ -38,14 +38,10 @@ export default {
   a {
     text-decoration: none;
   }
-  & > a > div.image-container > img {
-    width: 100%;
-    object-fit: cover;
-  }
 
   &:hover {
     a > div.image-container > img {
-      opacity: 0.4;
+      transform: scale(1.05)
     }
 
     a > div.image-container > div.overlay {
@@ -55,8 +51,19 @@ export default {
   }
 
   &:not(:first-child) {
-    > a > div.image-container > img {
-      height: 250px;
+    > a > div.image-container {
+      border: #ccc 0.5px solid;
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }
@@ -70,14 +77,34 @@ p {
   margin-bottom: 5px;
 }
 
+// Featured project and common styles
 div.image-container {
   overflow: hidden;
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-radius: 2px;
 
   img {
-    transition: all 0.2s ease-in;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in;
+  }
+
+  // On small screens, featured project looks the same as other tiles
+  @media screen and (max-width: 600px) {
+    border: #ccc 0.5px solid;
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease-in;
+    }
   }
 }
 

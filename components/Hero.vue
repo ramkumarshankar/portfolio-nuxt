@@ -35,8 +35,8 @@ export default {
 .hero-section {
   display: flex;
   flex-direction: column;
-  padding: 150px 0px 150px 0px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  padding: 200px 0px;
+  // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
   position: relative;
 }
