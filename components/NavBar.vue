@@ -43,9 +43,8 @@ export default {
 
 <style lang="stylus" scoped>
 header {
-  max-width: 960px;
   margin: auto;
-  padding: 20px 0px;
+  padding: 20px 6em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -56,10 +55,6 @@ header {
     position: absolute;
     left: 0;
     right: 0
-  }
-
-  @media screen and (max-width: 1024px) {
-    width: 760px !important;
   }
 
   @media screen and (max-width: 800px) {

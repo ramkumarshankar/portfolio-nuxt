@@ -46,6 +46,12 @@ export default class LandingCanvas {
     this.canvasEl = canvasEl;
     this.ctx = this.canvasEl.getContext("2d");
     this.reqAnim = null;
+    this.mousePoint = {
+      position: {
+        x: 0,
+        y: 0
+      }
+    }
     this.generatePoints();
   }
 
@@ -55,8 +61,25 @@ export default class LandingCanvas {
     for (let i = 0; i < 20; i++) {
       this.circles.push(new Circle(this.canvasEl));
     }
-    for (let i = 0; i < 10; i++) {
-      this.points.push(new Circle(this.canvasEl, "invisible"));
+    this.points.push(this.mousePoint)
+    // for (let i = 0; i < 10; i++) {
+    //   this.points.push(new Circle(this.canvasEl, "invisible"));
+    // }
+  }
+
+  onMouseMove(xPos, yPos) {
+    // console.log('in canvas', xPos, yPos);
+    this.points[0].position = {
+      x: xPos * window.devicePixelRatio,
+      y: yPos * window.devicePixelRatio
+    }
+  }
+
+  onMouseOut(xPos, yPos) {
+    // console.log('in canvas', xPos, yPos);
+    this.points[0].position = {
+      x: 0,
+      y: 0
     }
   }
 
@@ -68,9 +91,9 @@ export default class LandingCanvas {
   }
 
   update() {
-    for (let i = 0; i < this.points.length; i++) {
-      this.points[i].update(this.canvasEl);
-    }
+    // for (let i = 0; i < this.points.length; i++) {
+    //   this.points[i].update(this.canvasEl);
+    // }
     for (let j = 0; j < this.circles.length; j++) {
       this.circles[j].update(this.canvasEl);
     }

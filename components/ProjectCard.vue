@@ -39,6 +39,7 @@ export default {
 
 .project-card {
   border-radius: 2px;
+  border: $image-border-style;
 
   img {
     width: 100%;

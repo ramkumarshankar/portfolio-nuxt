@@ -1,5 +1,5 @@
 <template>
-  <div class="tile" :class="featured ? 'featured' : ''">
+  <div class="tile">
     <prismic-link :field="link">
       <div class="image-container">
         <prismic-image :field="image"/>
@@ -9,26 +9,42 @@
       </div>
       <h2>{{ title }}</h2>
       <p>{{ description }}</p>
-      <Tags :tags="this.$route.name === 'index' ? tags : null"/>
+      <!-- <Tags :tags="this.$route.name === 'index' ? tags : null"/> -->
     </prismic-link>
   </div>
 </template>
 
 <script>
-import Tags from "@/components/Tags";
+// import Tags from "@/components/Tags";
 
 export default {
   name: "ProjectTile",
-  components: {
-    Tags
-  },
   props: {
-    title: String,
-    description: String,
-    link: Object,
-    image: Object,
-    tags: Array,
-    featured: Boolean
+    title: {
+      type: String,
+      required: true,
+      default: '',
+    },
+    description: {
+      type: String,
+      required: true,
+      default: '',
+    },
+    link: {
+      type: Object,
+      required: true,
+      default: () => {},
+    },
+    image: {
+      type: Object,
+      required: true,
+      default: () => {},
+    },
+    tags: {
+      type: Array,
+      required: true,
+      default: () => [],
+    }
   }
 };
 </script>
@@ -37,6 +53,28 @@ export default {
 .tile {
   a {
     text-decoration: none;
+
+    div.image-container {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 10px;
+      border-radius: 2px;
+      border: $image-border-style;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease-in;
+      }
+    }
   }
 
   &:hover {
@@ -49,23 +87,6 @@ export default {
       transform: scaleY(1);
     }
   }
-
-  &:not(:first-child) {
-    > a > div.image-container {
-      border: #ccc 0.5px solid;
-      &::after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
-      img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
 }
 
 h2 {
@@ -75,37 +96,6 @@ h2 {
 
 p {
   margin-bottom: 5px;
-}
-
-// Featured project and common styles
-div.image-container {
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 10px;
-  border-radius: 2px;
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease-in;
-  }
-
-  // On small screens, featured project looks the same as other tiles
-  @media screen and (max-width: 600px) {
-    border: #ccc 0.5px solid;
-    &::after {
-      content: "";
-      display: block;
-      padding-bottom: 100%;
-    }
-    img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.3s ease-in;
-    }
-  }
 }
 
 div.overlay {

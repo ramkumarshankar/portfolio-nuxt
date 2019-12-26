@@ -61,18 +61,13 @@ footer {
 
   div.footer-inner {
     background-color: #1B1B1B;
-    max-width: 960px;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    padding: 30px 0px;
+    padding: 30px 6em;
     flex-wrap: wrap;
-
-    @media screen and (max-width: 1024px) {
-      width: 760px !important;
-    }
 
     @media screen and (max-width: 800px) {
       padding-left: 1.5rem;

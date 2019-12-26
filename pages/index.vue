@@ -100,7 +100,9 @@ export default {
     }
 
     div.more-projects-block {
-      text-align: right;
+      padding: 20px 0px;
+      font-size: 1.125em;
+      text-align: center;
     }
 
     a {

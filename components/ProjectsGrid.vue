@@ -1,9 +1,8 @@
 <template>
-  <transition-group name="projectlist" class="projects" tag="div">
+  <transition-group name="projectlist" class="projects" tag="div" mode="out-in">
     <project-tile
       v-for="(item, index) in projects"
       :key="'project-item-' + index"
-      :featured="index === 0"
       :title="$prismic.richTextAsPlain(item.title)"
       :description="$prismic.richTextAsPlain(item.short_description)"
       :image="item.image"
@@ -34,7 +33,7 @@ export default {
 <style lang="stylus" scoped>
 .projects {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 50px;
   grid-column-gap: 50px;
   row-gap: 50px;
@@ -44,17 +43,7 @@ export default {
   @media screen and (max-width: 600px) {
     grid-template-columns: 1fr !important;
   }
-  .featured {
-    grid-column-start: 1;
-    grid-column-end: 3;
-
-    @media screen and (max-width: 600px) {
-      grid-column-start: 1;
-      grid-column-end: 2;
-    }
-  }
 }
-
 
 .projectlist-enter-active {
   transition: all 0.3s 0.2s;

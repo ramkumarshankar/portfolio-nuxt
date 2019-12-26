@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-section">
+  <div ref="hero" class="hero-section">
     <canvas id="heroCanvas"></canvas>
     <div class="container">
       <h1 class="hero-headline">{{ headline }}</h1>
@@ -26,6 +26,13 @@ export default {
       heroCanvas.parentElement.clientHeight * window.devicePixelRatio;
     this.canvasAnimation = new HeroCanvas(heroCanvas);
     this.canvasAnimation.setup();
+    console.log(this.$refs);
+    this.$refs.hero.addEventListener('mousemove', evt => {
+      this.canvasAnimation.onMouseMove(evt.clientX, evt.clientY)
+    })
+    this.$refs.hero.addEventListener('mouseout', evt => {
+      this.canvasAnimation.onMouseOut()
+    })
     this.canvasAnimation.draw();
   }
 };
@@ -44,7 +51,7 @@ export default {
 h1.hero-headline {
   font-family: $base-heading-font-family-serif;
   font-weight: 200;
-  width: 70%;
+  width: 100%;
   color: #FFF;
 
   @media screen and (max-width: 800px) {
