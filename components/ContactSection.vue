@@ -4,6 +4,7 @@
       <h1>{{ $prismic.richTextAsPlain(heading) }}</h1>
       <prismic-rich-text :field="text" />
     </div>
+    <img src="~/assets/images/undraw_mail_box.svg">
     <contact-form />
   </div>
 </template>
@@ -39,6 +40,19 @@ div.contact-block {
   padding: 50px;
   margin-top: 30px;
   margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    right: 50px;
+    bottom: -10px;
+    width: 130px;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
 
   button {
     margin-top: 5px;
