@@ -9,14 +9,17 @@
           <projects-grid :projects="projects"/>
         </section>
         <div class="button-block">
-          <nuxt-link to="/work" tag="button" class="outline">All projects &#10141;</nuxt-link>
+          <nuxt-link to="/work" tag="button" class="primary">All projects</nuxt-link>
         </div>
       </div>
       <div class="headline">
         <prismic-rich-text :field="aboutHeadline" />
         <prismic-rich-text :field="aboutSubheading" />
         <div class="button-block">
-          <nuxt-link to="/about" tag="button" class="outline">About me</nuxt-link>
+          <nuxt-link to="/about" tag="button" class="primary">About me</nuxt-link>
+          <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank">
+            <button class="outline">Buy me a coffee &#10141;</button>
+          </a>
         </div>
       </div>
       <!-- <contact-section :text="contactText"/> -->
@@ -104,7 +107,13 @@ export default {
   div.button-block {
     padding: 20px 0px;
     font-size: 1.125em;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    * {
+      margin: 0px 10px;
+    }
   }
 
   h2.section-header {
