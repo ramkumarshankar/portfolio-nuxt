@@ -101,11 +101,11 @@ header {
         padding-bottom: 5px;
 
         &.router-link-exact-active {
-          box-shadow: inset 0px -2px 0 0 #735290;
+          box-shadow: inset 0px -2px 0 0 $button-color;
         }
 
         &:hover {
-          box-shadow: inset 0px -2px 0 0 #735290;
+          box-shadow: inset 0px -2px 0 0 $button-color;
           transition: box-shadow 0.2s ease-out;
         }
       }

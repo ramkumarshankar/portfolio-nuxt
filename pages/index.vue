@@ -2,8 +2,9 @@
   <div class="home">
     <Hero :headline="$prismic.richTextAsPlain(headline)"/>
     <div class="container">
+      <prismic-rich-text :field="aboutme" class="headline" />
       <div class="projects-section">
-        <h2 class="section-header">Featured Work</h2>
+        <h3 class="small-header">My Work</h3>
         <section class="projects-grid">
           <projects-grid :projects="projects"/>
         </section>
@@ -43,6 +44,7 @@ export default {
       // Headline
       // const headline = this.$prismic.richTextAsPlain(document.data.headline)
       const headline = document.headline
+      const aboutme = document.about_me
       // Get projects
       const projectsResponse = document.body[0].items;
       const displayedProjects = [];
@@ -56,6 +58,7 @@ export default {
           tags: project.featured_projects.tags
         });
       });
+      console.log(document)
       // Get teaching section
       const teachingSection = document.body[1].primary;
       const teachingHeading = teachingSection.teachingheading;
@@ -67,6 +70,7 @@ export default {
       return {
         documentId: result.id,
         headline: headline,
+        aboutme: aboutme,
         projects: displayedProjects,
         teachingHeading: teachingHeading,
         teachingBody: teachingBody,
@@ -81,6 +85,11 @@ export default {
 
 <style lang="stylus">
 .home {
+  .headline {
+    text-align: center;
+    margin: 80px 0px;
+  }
+
   h2.section-header {
     margin-top: 30px;
     margin-bottom: 30px;

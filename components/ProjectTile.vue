@@ -4,7 +4,7 @@
       <div class="image-container">
         <prismic-image :field="image"/>
         <div class="overlay">
-          <div>View Project</div>
+          <div>Read More</div>
         </div>
       </div>
       <h2>{{ title }}</h2>
@@ -113,10 +113,12 @@ div.overlay {
   transition: all 0.2s ease-in;
 
   div {
-    margin-right: 10px;
-    background: #DA4167;
+    // margin-right: 10px;
+    background: #333;
     padding: 10px 20px;
     color: #FFF;
+    font-size: 0.8rem;
+    // font-weight: 300;
   }
 }
 </style>

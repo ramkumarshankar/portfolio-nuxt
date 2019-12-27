@@ -15,7 +15,10 @@
   background: darken($button-color, 20)
 
 .secondary 
-  background: transparent
+  // background: transparent
+  background: linear-gradient(to left, transparent 50%, $button-color 50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
   border: 2px solid $button-color
   border-radius: 2px
   padding: 10px 25px
@@ -24,5 +27,5 @@
   font-weight: 700
 
 .secondary:hover
-  background: $button-color
+  background-position:left bottom;
   color: #FFF

@@ -1,7 +1,11 @@
-const circleColours = ["#DA4167", "#404E7C", "#735290"];
+// import { makeNoise2D } from "open-simplex-noise";
+
+// const noise2D = makeNoise2D(Date.now());
+const circleColours = ["#c200fb", "#fc2f00", "#4868fe", "#2aea9c", "#ffc724"];
+// const numPoints = 1000;
 
 class Circle {
-  constructor(canvasEl, type = null) {
+  constructor(canvasEl, type = null, index) {
     this.velocity = {
       x: Math.random() < 0.5 ? Math.random() : Math.random() * -1,
       y: Math.random() < 0.5 ? Math.random() : Math.random() * -1
@@ -15,10 +19,17 @@ class Circle {
       circleColours[Math.floor(Math.random() * circleColours.length)];
   }
 
-  update(canvasEl) {
-    // console.log(canvasEl.clientWidth + ' - ' + canvasEl.clientHeight)
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+  update(canvasEl, index) {
+    // this.velocity.x += this.velocity.x
+    // this.velocity.y += this.velocity.y
+    // this.velocity.x  += noise2D(index * 0.007, index * 0.007) + 1 / (2.0 * 255.0)
+    // this.velocity.x += noise2D(index, index);
+    // this.velocity.y += noise2D(index, index);
+    // this.velocity.y  += noise2D(index * 0.007, index * 0.007) + 1 / (2.0 * 255.0)
+    // this.position.x += noise2D(index, index) * 2;
+    // this.position.y += noise2D(index, index) * 2;
+    this.position.x = this.position.x + this.velocity.x;
+    this.position.y = this.position.y + this.velocity.y;
     if (this.position.x < 0 || this.position.x > canvasEl.width) {
       this.velocity.x *= -1;
     }
@@ -53,6 +64,35 @@ class MousePoint {
   }
 }
 
+// class Particle {
+//   constructor() {
+//     this.velocity = {
+//       x: Math.random() < 0.5 ? Math.random() : Math.random() * -1,
+//       y: Math.random() < 0.5 ? Math.random() : Math.random() * -1
+//     };
+//     this.position = {
+//       x: 0,
+//       y: 0
+//     };
+//     this.radius = 2;
+//     this.color = "#CCCCCC";
+//   }
+
+//   update(index) {
+//     // console.log(canvasEl.clientWidth + ' - ' + canvasEl.clientHeight)
+//     this.position.x += this.velocity.x + noise2D(index, index);
+//     this.position.y += this.velocity.y + noise2D(index, index);
+//   }
+
+//   draw(ctx) {
+//     ctx.fillStyle = this.color;
+//     ctx.beginPath();
+//     ctx.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
+//     ctx.fill();
+//     ctx.closePath();
+//   }
+// }
+
 export default class LandingCanvas {
   constructor(canvasEl) {
     this.backgroundColor = "#1B1B1B";
@@ -65,9 +105,13 @@ export default class LandingCanvas {
 
   generatePoints() {
     this.circles = [];
-    for (let i = 0; i < 20; i++) {
-      this.circles.push(new Circle(this.canvasEl));
+    for (let i = 0; i < 100; i++) {
+      this.circles.push(new Circle(this.canvasEl, i));
     }
+    // this.particles = [];
+    // for (let j = 0; j < numPoints; j++) {
+    //   this.particles.push(new Particle());
+    // }
   }
 
   onMouseMove(xPos, yPos) {
@@ -84,7 +128,7 @@ export default class LandingCanvas {
 
   update() {
     for (let j = 0; j < this.circles.length; j++) {
-      this.circles[j].update(this.canvasEl);
+      this.circles[j].update(this.canvasEl, j);
     }
   }
 
@@ -94,13 +138,10 @@ export default class LandingCanvas {
     for (let i = 0; i < this.circles.length; i++) {
       this.circles[i].draw(this.ctx);
     }
-    // console.log(this.points[0].position.x)
     for (let j = 0; j < this.circles.length; j++) {
       const circle = this.circles[j];
       const distance = this.calculateDistance(this.mousePoint, circle.position);
-      // console.log(distance)
       if (distance < 400) {
-        // console.log('stroke')
         this.ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
         this.ctx.beginPath();
         this.ctx.moveTo(this.mousePoint.x, this.mousePoint.y);

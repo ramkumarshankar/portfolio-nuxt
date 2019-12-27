@@ -5,6 +5,7 @@ $base-heading-font-weight = 200
 $base-line-height= 1.5em
 $text-color = #323132
 $text-color-light = #424142
+$text-color-lighter = #727172
 
 body, h1, h2, h3, h4, h5, h6
   font-family: $base-heading-font-family
@@ -26,6 +27,13 @@ h2 {
 
 h3 {
   font-size: 1.333em
+
+  &.small-header {
+    font-size: 1.2em
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $text-color-lighter;
+  }
 }
 
 h1.page-headline 
@@ -72,4 +80,8 @@ a.footer-button {
     background: white
     color: #323132
   }
+}
+
+.semibold {
+  font-weight: 600;
 }
