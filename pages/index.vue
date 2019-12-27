@@ -9,7 +9,7 @@
           <projects-grid :projects="projects"/>
         </section>
         <div class="more-projects-block">
-          <nuxt-link to="/work">More projects &#10141;</nuxt-link>
+          <nuxt-link to="/work" tag="button" class="outline">All projects &#10141;</nuxt-link>
         </div>
       </div>
       <teaching-section :title="$prismic.richTextAsPlain(teachingHeading)" :body="teachingBody"/>
