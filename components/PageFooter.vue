@@ -1,7 +1,6 @@
 <template>
   <footer :class="this.$route.name === 'thanks' ? 'fixed' : ''">
     <div class="footer-inner">
-      <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank" class="footer-button"><span style="margin-right: 8px;">☕️</span>Buy me a coffee</a>
       <ul class="icons-list">
         <li>
           <a :href="twitterLink">
@@ -63,7 +62,7 @@ footer {
     background-color: #1B1B1B;
     margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     z-index: 100;
     padding: 30px 6em;
