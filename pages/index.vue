@@ -95,7 +95,7 @@ export default {
 <style lang="stylus">
 .home {
   .headline {
-    width: 60%;
+    width: 70%;
     text-align: center;
     margin: 80px auto;
 
@@ -110,9 +110,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
     * {
-      margin: 0px 10px;
+      margin: 5px 10px;
     }
   }
 
