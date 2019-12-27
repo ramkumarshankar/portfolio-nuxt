@@ -26,7 +26,6 @@ export default {
       heroCanvas.parentElement.clientHeight * window.devicePixelRatio;
     this.canvasAnimation = new HeroCanvas(heroCanvas);
     this.canvasAnimation.setup();
-    console.log(this.$refs);
     this.$refs.hero.addEventListener('mousemove', evt => {
       this.canvasAnimation.onMouseMove(evt.clientX, evt.clientY)
     })

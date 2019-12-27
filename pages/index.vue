@@ -2,18 +2,24 @@
   <div class="home">
     <Hero :headline="$prismic.richTextAsPlain(headline)"/>
     <div class="container">
-      <prismic-rich-text :field="aboutme" class="headline" />
+      <prismic-rich-text :field="projectsHeadline" class="headline" />
       <div class="projects-section">
         <h3 class="small-header">My Work</h3>
         <section class="projects-grid">
           <projects-grid :projects="projects"/>
         </section>
-        <div class="more-projects-block">
+        <div class="button-block">
           <nuxt-link to="/work" tag="button" class="outline">All projects &#10141;</nuxt-link>
         </div>
       </div>
-      <teaching-section :title="$prismic.richTextAsPlain(teachingHeading)" :body="teachingBody"/>
-      <contact-section :text="contactText"/>
+      <div class="headline">
+        <prismic-rich-text :field="aboutHeadline" />
+        <prismic-rich-text :field="aboutSubheading" />
+        <div class="button-block">
+          <nuxt-link to="/about" tag="button" class="outline">About me</nuxt-link>
+        </div>
+      </div>
+      <!-- <contact-section :text="contactText"/> -->
     </div>
   </div>
 </template>
@@ -21,15 +27,13 @@
 <script>
 import Hero from "@/components/Hero.vue";
 import ProjectsGrid from "@/components/ProjectsGrid.vue";
-import TeachingSection from "@/components/TeachingSection.vue";
-import ContactSection from "@/components/ContactSection.vue";
+// import ContactSection from "@/components/ContactSection.vue";
 
 export default {
   components: {
     Hero,
     ProjectsGrid,
-    TeachingSection,
-    ContactSection
+    // ContactSection
   },
   async asyncData({app, error, req}) {
     try {
@@ -44,7 +48,7 @@ export default {
       // Headline
       // const headline = this.$prismic.richTextAsPlain(document.data.headline)
       const headline = document.headline
-      const aboutme = document.about_me
+      const projectsHeadline = document.projects_headline
       // Get projects
       const projectsResponse = document.body[0].items;
       const displayedProjects = [];
@@ -58,22 +62,24 @@ export default {
           tags: project.featured_projects.tags
         });
       });
-      console.log(document)
-      // Get teaching section
-      const teachingSection = document.body[1].primary;
-      const teachingHeading = teachingSection.teachingheading;
-      const teachingBody = teachingSection.teachingbody;
       // Get contact section
       const contactSection = document.body[2].primary;
       const contactText = contactSection.contacttext;
 
+      // Get about section
+      const aboutSection = document.body[1].primary;
+      const aboutHeadline = aboutSection.about_headline;
+      const aboutSubheading = aboutSection.about_subheading;
+      // const aboutHeadline = document.body[2].primary;
+      // const contactText = contactSection.contacttext;
+
       return {
         documentId: result.id,
         headline: headline,
-        aboutme: aboutme,
+        projectsHeadline: projectsHeadline,
         projects: displayedProjects,
-        teachingHeading: teachingHeading,
-        teachingBody: teachingBody,
+        aboutHeadline: aboutHeadline,
+        aboutSubheading: aboutSubheading,
         contactText: contactText,
       }
     } catch (e) {
@@ -86,8 +92,19 @@ export default {
 <style lang="stylus">
 .home {
   .headline {
+    width: 60%;
     text-align: center;
-    margin: 80px 0px;
+    margin: 80px auto;
+
+    @media screen and (max-width: 800px) {
+      width: auto;
+    }
+  }
+
+  div.button-block {
+    padding: 20px 0px;
+    font-size: 1.125em;
+    text-align: center;
   }
 
   h2.section-header {
@@ -100,18 +117,11 @@ export default {
   }
 
   div.projects-section {
-    border-bottom: solid 1px #DDD;
     padding-bottom: 30px;
 
     section.projects-grid {
       min-height: 300px;
       position: relative;
-    }
-
-    div.more-projects-block {
-      padding: 20px 0px;
-      font-size: 1.125em;
-      text-align: center;
     }
 
     a {
