@@ -16,13 +16,14 @@
         <prismic-rich-text :field="aboutHeadline" />
         <prismic-rich-text :field="aboutSubheading" />
         <div class="button-block">
-          <nuxt-link to="/about" tag="button" class="primary">About me</nuxt-link>
+          <nuxt-link to="/about" tag="button" class="primary min-width">About me</nuxt-link>
           <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank">
-            <button class="outline">Buy me a coffee &#10141;</button>
+            <button class="outline min-width">Buy me a coffee &#10141;</button>
           </a>
         </div>
       </div>
       <!-- <contact-section :text="contactText"/> -->
+      <contact-section :heading="contactHeading" :text="contactText" />
     </div>
   </div>
 </template>
@@ -30,13 +31,13 @@
 <script>
 import Hero from "@/components/Hero.vue";
 import ProjectsGrid from "@/components/ProjectsGrid.vue";
-// import ContactSection from "@/components/ContactSection.vue";
+import ContactSection from "@/components/ContactSection.vue";
 
 export default {
   components: {
     Hero,
     ProjectsGrid,
-    // ContactSection
+    ContactSection
   },
   async asyncData({app, error, req}) {
     try {
@@ -67,6 +68,7 @@ export default {
       });
       // Get contact section
       const contactSection = document.body[2].primary;
+      const contactHeading = contactSection.contactheading;
       const contactText = contactSection.contacttext;
 
       // Get about section
@@ -83,7 +85,8 @@ export default {
         projects: displayedProjects,
         aboutHeadline: aboutHeadline,
         aboutSubheading: aboutSubheading,
-        contactText: contactText,
+        contactHeading: contactHeading,
+        contactText: contactText
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })

@@ -1,56 +1,47 @@
 <template>
-  <div class="contact">
-    <div class="container">
-      <h1 class="page-headline">{{ $prismic.richTextAsPlain(title) }}</h1>
-      <section class="contact-section">
-        <contact-form />
-      </section>
+  <form
+    name="contact"
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="botfield"
+    action="/thanks"
+  >
+    <div class="form-input">
+      <input type="hidden" name="form-name" value="contact">
+      <div style="display: none">
+        <label for="botfield">Don’t fill this out if you're human</label>
+        <input type="text" name="botfield">
+      </div>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="full name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="email address"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          required
+        >
+      </div>
+      <div class="message">
+        <label for="message">Message</label>
+        <textarea name="message" placeholder="message" required/>
+      </div>
     </div>
-  </div>
+    <button class="primary" type="submit">Send</button>
+  </form>
 </template>
 
 <script>
-import ContactForm from "@/components/ContactForm.vue";
-
 export default {
-  name: 'Contact',
-  head() {
-    return {
-      titleTemplate: '%s | Contact'
-    }
-  },
-  components: {
-    ContactForm
-  },
-  async asyncData({ app, error, req }) {
-    try {
-      const result = await app.api.getSingle('contactpage')
-      const document = result.data
-      const docId = result.id
-      const title = document.title
-      return {
-        docId: docId,
-        title: title
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
-    }
-  }
+  name: 'ContactForm',
 }
 </script>
 
 <style lang="stylus" scoped>
-h1.page-headline {
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-section.contact-section {
-  position: relative;
-  min-height: 300px;
-  margin-bottom: 30px;
-}
-
 .form-input {
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
