@@ -17,7 +17,7 @@
         <prismic-rich-text :field="aboutSubheading" />
         <div class="button-block">
           <nuxt-link to="/about" tag="button" class="primary min-width">About me</nuxt-link>
-          <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank">
+          <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank" rel="noopener">
             <button class="outline min-width">Buy me a coffee &#10141;</button>
           </a>
         </div>
