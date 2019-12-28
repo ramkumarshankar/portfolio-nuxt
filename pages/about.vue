@@ -5,7 +5,6 @@
         <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
         <prismic-rich-text :field="highlight"/>
       </div>
-      <img class="about-img-highlight" src="~/assets/images/undraw_resume.svg">
       <section class="about-section">
         <div>
           <prismic-rich-text :field="bodyText"/>
@@ -47,18 +46,6 @@ export default {
 <style lang="stylus" scoped>
 div.about {
   position: relative;
-
-  img.about-img-highlight {
-    position: absolute;
-    top:-20px;
-    right: 50px;
-    transform: rotate(20deg);
-    width: 150px;
-
-    @media screen and (max-width: 800px) {
-      display: none;
-    }
-  }
 }
 
 section.about-section {
