@@ -4,27 +4,27 @@
       <ul class="icons-list">
         <li>
           <a :href="twitterLink">
-            <fa :icon="['fab', 'twitter']" />
+            <fa :icon="['fab', 'twitter']" alt="twitter" />
           </a>
         </li>
         <li>
           <a :href="facebookLink">
-            <fa :icon="['fab', 'facebook']" />
+            <fa :icon="['fab', 'facebook']" alt="facebook" />
           </a>
         </li>
         <li>
           <a :href="linkedinLink">
-            <fa :icon="['fab', 'linkedin']" />
+            <fa :icon="['fab', 'linkedin']" alt="linkedin" />
           </a>
         </li>
         <li>
           <a :href="dribbbleLink">
-            <fa :icon="['fab', 'dribbble']" />
+            <fa :icon="['fab', 'dribbble']" alt="dribbble" />
           </a>
         </li>
         <li>
           <a :href="githubLink">
-            <fa :icon="['fab', 'github']" />
+            <fa :icon="['fab', 'github']" alt="github" />
           </a>
         </li>
       </ul>
