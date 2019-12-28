@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="container">
-      <div class="about-headline">
+      <div class="page-heading-section">
         <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
         <prismic-rich-text :field="highlight"/>
       </div>
@@ -47,19 +47,6 @@ export default {
 <style lang="stylus" scoped>
 div.about {
   position: relative;
-  div.about-headline {
-    width: 70%;
-    text-align: center;
-    margin: 80px auto;
-
-    h1 {
-      font-family: $base-heading-font-family-serif;
-    }
-
-    @media screen and (max-width: 800px) {
-      width: auto;
-    }
-  }
 
   img.about-img-highlight {
     position: absolute;
@@ -72,10 +59,6 @@ div.about {
       display: none;
     }
   }
-}
-h1.page-headline {
-  margin-top: 50px;
-  margin-bottom: 20px;
 }
 
 section.about-section {

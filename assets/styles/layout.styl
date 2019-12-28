@@ -1,3 +1,5 @@
+@import 'typography.styl'
+
 .container 
   padding-left: 6em;
   padding-right: 6em;
@@ -8,3 +10,17 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100% !important;
+
+.page-heading-section {
+  width: 70%;
+  text-align: center;
+  margin: 80px auto;
+
+  h1 {
+    font-family: $base-heading-font-family-serif;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: auto;
+  }
+}

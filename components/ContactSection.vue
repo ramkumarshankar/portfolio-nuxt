@@ -45,9 +45,10 @@ div.contact-block {
 
   img {
     position: absolute;
-    right: 50px;
+    right: 40px;
     bottom: -10px;
     width: 130px;
+    transform: rotate(10deg);
 
     @media screen and (max-width: 800px) {
       display: none;

@@ -1,10 +1,14 @@
 <template>
   <div class="contact">
     <div class="container">
-      <h1 class="page-headline">{{ $prismic.richTextAsPlain(title) }}</h1>
+      <div class="page-heading-section">
+        <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
+        <prismic-rich-text :field="subheading"/>
+      </div>
       <section class="contact-section">
         <contact-form />
       </section>
+      <img src="~/assets/images/undraw_mail_box.svg">
     </div>
   </div>
 </template>
@@ -28,9 +32,11 @@ export default {
       const document = result.data
       const docId = result.id
       const title = document.title
+      const subheading = document.subheading;
       return {
         docId: docId,
-        title: title
+        title: title,
+        subheading: subheading
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
@@ -40,65 +46,24 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-h1.page-headline {
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-section.contact-section {
+div.contact {
   position: relative;
-  min-height: 300px;
-  margin-bottom: 30px;
-}
+  padding-bottom: 30px;
+  img {
+    position: absolute;
+    right: 40px;
+    bottom: 0px;
+    width: 130px;
+    transform: rotate(10deg);
 
-.form-input {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-  margin-bottom: 30px;
-  column-gap: 20px;
-  grid-column-gap: 20px;
-  row-gap: 20px;
-  grid-row-gap: 20px;
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr !important;
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
   }
-}
-
-label {
-  font-family: $base-body-font-family;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 5px;
-}
-
-input {
-  width: 100%;
-  font-size: 1.125em;
-  padding: 10px 10px;
-  border: 1px solid #979797;
-  // box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.50)
-  border-radius: 2px;
-}
-
-textarea {
-  width: 100%;
-  font-size: 1.125em;
-  padding: 10px 10px;
-  border: 1px solid #979797;
-  // box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.50)
-  border-radius: 2px;
-  height: 200px;
-}
-
-div.message {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  width: 100%;
-
-  @media screen and (max-width: 768px) {
-    grid-column-start: 1;
-    grid-column-end: 2;
+  
+  section.contact-section {
+    position: relative;
+    min-height: 300px;
   }
 }
 </style>
