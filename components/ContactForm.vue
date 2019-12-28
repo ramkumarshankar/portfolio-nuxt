@@ -31,7 +31,7 @@
         <textarea name="message" placeholder="message" required/>
       </div>
     </div>
-    <button class="primary" type="submit">Send</button>
+    <button class="primary" type="submit">Send Message</button>
   </form>
 </template>
 
