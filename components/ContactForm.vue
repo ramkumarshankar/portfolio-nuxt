@@ -10,15 +10,16 @@
       <input type="hidden" name="form-name" value="contact">
       <div style="display: none">
         <label for="botfield">Don’t fill this out if you're human</label>
-        <input type="text" name="botfield">
+        <input id="botfield" type="text" name="botfield">
       </div>
       <div>
         <label for="name">Name</label>
-        <input type="text" name="name" placeholder="full name" required>
+        <input id="name" type="text" name="name" placeholder="full name" required>
       </div>
       <div>
         <label for="email">Email</label>
         <input
+          id="email"
           type="email"
           name="email"
           placeholder="email address"
@@ -28,7 +29,7 @@
       </div>
       <div class="message">
         <label for="message">Message</label>
-        <textarea name="message" placeholder="message" required/>
+        <textarea id="message" name="message" placeholder="message" required/>
       </div>
     </div>
     <button class="primary" type="submit">Send Message</button>
