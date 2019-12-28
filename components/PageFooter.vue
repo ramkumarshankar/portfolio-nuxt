@@ -66,6 +66,7 @@ footer {
     align-items: center;
     z-index: 100;
     padding: 30px 6em;
+    max-width: 1024px;
     flex-wrap: wrap;
 
     @media screen and (max-width: 800px) {

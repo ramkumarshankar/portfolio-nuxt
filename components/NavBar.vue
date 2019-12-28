@@ -45,6 +45,7 @@ export default {
 header {
   margin: auto;
   padding: 20px 6em;
+  max-width: 1024px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
