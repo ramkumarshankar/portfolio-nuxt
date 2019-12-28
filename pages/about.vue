@@ -1,11 +1,12 @@
 <template>
   <div class="about">
     <div class="container">
-      <h1 class="page-headline">{{ $prismic.richTextAsPlain(title) }}</h1>
+      <div class="about-headline">
+        <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
+        <prismic-rich-text :field="highlight"/>
+      </div>
+      <img class="about-img-highlight" src="~/assets/images/undraw_resume.svg">
       <section class="about-section">
-        <div>
-          <prismic-rich-text :field="highlight"/>
-        </div>
         <div>
           <prismic-rich-text :field="bodyText"/>
         </div>
@@ -44,24 +45,40 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+div.about {
+  position: relative;
+  div.about-headline {
+    width: 70%;
+    text-align: center;
+    margin: 80px auto;
+
+    h1 {
+      font-family: $base-heading-font-family-serif;
+    }
+
+    @media screen and (max-width: 800px) {
+      width: auto;
+    }
+  }
+
+  img.about-img-highlight {
+    position: absolute;
+    top:-20px;
+    right: 50px;
+    transform: rotate(20deg);
+    width: 150px;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+}
 h1.page-headline {
   margin-top: 50px;
   margin-bottom: 20px;
 }
 
 section.about-section {
-  position: relative;
-  column-gap: 20px;
-  grid-column-gap: 20px;
-  row-gap: 20px;
-  grid-row-gap: 20px;
-  min-height: 300px;
-  display: grid;
-  grid-template-columns: 0.33fr 0.66fr;
-  margin-bottom: 30px;
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr !important;
-  }
+  margin-bottom: 80px;
 }
 </style>
