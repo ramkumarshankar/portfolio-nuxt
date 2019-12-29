@@ -6,8 +6,16 @@
         <prismic-rich-text :field="highlight"/>
       </div>
       <section class="about-section">
-        <div>
-          <prismic-rich-text :field="bodyText"/>
+        <prismic-rich-text :field="bodyText"/>
+        <div class="page-heading-section">
+          <h2>I've won a few awards for my work 🎉</h2>
+        </div>
+        <div class="awards-section">
+          <div v-for="(award, index) in awards" :key="index" class="awards-row">
+            <span>{{ $prismic.richTextAsPlain(award.award_name) }} / <span class="semibold">{{ $prismic.richTextAsPlain(award.award_work) }}</span></span>
+            <span class="awards-org">{{ $prismic.richTextAsPlain(award.award_organisation) }}</span>
+            <span class="awards-year">{{ $prismic.richTextAsPlain(award.award_year) }}</span>
+          </div>
         </div>
       </section>
     </div>
@@ -30,11 +38,13 @@ export default {
       const title = document.title;
       const highlight = document.highlight;
       const bodyText = document.text;
+      const awards = document.body[0].items;
       return {
         docId: docId,
         title: title,
         highlight: highlight,
-        bodyText: bodyText
+        bodyText: bodyText,
+        awards: awards
       };
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
@@ -45,10 +55,38 @@ export default {
 
 <style lang="stylus" scoped>
 div.about {
-  position: relative;
+  section.about-section {
+    margin-bottom: 80px;
+
+    div.awards-section {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      div.awards-row {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 0.5fr;
+        padding: 20px 0px;
+        border-bottom: 1px solid #CCC;
+
+        @media screen and (max-width: 600px) {
+          grid-template-columns: 1fr !important;
+
+          span.awards-org, span.awards-year {
+            justify-self: start !important;
+            color: $text-color-lighter;
+          }
+        }
+
+        span.awards-org {
+          justify-self: end;
+        }
+
+        span.awards-year {
+          justify-self: end;
+        }
+      }
+    }
+  }
 }
 
-section.about-section {
-  margin-bottom: 80px;
-}
 </style>
