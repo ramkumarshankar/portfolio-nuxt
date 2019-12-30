@@ -15,11 +15,13 @@ export default {
   props: {
     heading: {
       type: String,
-      required: false
+      required: false,
+      default: '',
     },
     body: {
       type: Array,
-      required: false
+      required: false,
+      default: () => []
     }
   }
 };

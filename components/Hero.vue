@@ -12,7 +12,13 @@ import HeroCanvas from "@/components/HeroCanvas";
 
 export default {
   name: "Hero",
-  props: ["headline"],
+  props: {
+    headline: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  },
   data() {
     return {
       canvasAnimation: null

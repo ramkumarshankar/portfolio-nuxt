@@ -1,7 +1,7 @@
 <template>
   <header :class="navFixed ? 'fixed' : ''">
     <nuxt-link to="/">
-      <h1 class="site-title" :class="navTheme">Ramkumar Shankar</h1>
+      <h1 :class="navTheme" class="site-title">Ramkumar Shankar</h1>
     </nuxt-link>
     <nav>
       <ul>
@@ -13,10 +13,10 @@
         </li>
         <li>
           <nuxt-link
+            :class="navTheme"
             class="secondary"
             to="/contact"
             tag="button"
-            :class="navTheme"
           >Say hello</nuxt-link>
         </li>
       </ul>

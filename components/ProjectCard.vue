@@ -1,6 +1,6 @@
 <template>
-  <div class="project-card" :class="projectCard.length > 0 ? 'dark': 'transparent' ">
-    <prismic-image class="title-image" :field="titleImage"/>
+  <div :class="projectCard.length > 0 ? 'dark': 'transparent' " class="project-card">
+    <prismic-image :field="titleImage" class="title-image"/>
     <div v-if="projectCard.length > 0" class="project-card-details">
       <div v-for="(block, index) in projectCard" :key="index" class="card-block">
         <span class="card-header">{{ $prismic.richTextAsPlain(block.card_field_title) }}</span>

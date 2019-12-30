@@ -31,14 +31,14 @@ export default {
       activeIndex: null
     };
   },
+  created () {
+    this.activeIndex = 0;
+  },
   methods: {
     updateSelection(index, item) {
       this.activeIndex = index;
       this.$emit("filterChanged", item);
     }
-  },
-  created () {
-    this.activeIndex = 0;
   }
 };
 </script>

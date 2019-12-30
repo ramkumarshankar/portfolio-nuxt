@@ -1,12 +1,18 @@
 <template>
-  <div class="video-container" v-html="htmlContent">
+  <div v-html="htmlContent" class="video-container">
   </div>
 </template>
 
 <script>
 export default {
   name: "VideoEmbed",
-  props: ["htmlContent"]
+  props: {
+    htmlContent: {
+      type: String,
+      required: true,
+      default: ""
+    }
+  }
 };
 </script>
 

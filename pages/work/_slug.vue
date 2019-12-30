@@ -32,8 +32,8 @@
             <prismic-image
               v-for="(item, imageSliceIndex) in slice.items"
               :key="'imageslice-' + imageSliceIndex"
-              class="imageslice-item"
               :field="item.image"
+              class="imageslice-item"
             />
           </template>
           <template v-else-if="slice.slice_type === 'text_highlight'">
