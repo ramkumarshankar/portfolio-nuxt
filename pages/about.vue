@@ -8,7 +8,7 @@
       <section class="about-section">
         <prismic-rich-text :field="bodyText"/>
         <div class="page-heading-section">
-          <h2>I've won a few awards for my work 🎉</h2>
+          <prismic-rich-text :field="awardsHeading" />
         </div>
         <div class="awards-section">
           <div v-for="(award, index) in awards" :key="index" class="awards-row">
@@ -39,11 +39,13 @@ export default {
       const highlight = document.highlight;
       const bodyText = document.text;
       const awards = document.body[0].items;
+      const awardsHeading = document.body[0].primary.awards_heading;
       return {
         docId: docId,
         title: title,
         highlight: highlight,
         bodyText: bodyText,
+        awardsHeading: awardsHeading,
         awards: awards
       };
     } catch (e) {
