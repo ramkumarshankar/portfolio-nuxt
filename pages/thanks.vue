@@ -1,9 +1,9 @@
 <template>
   <div class="thanks">
-    <div class="container">
-      <h1>Thanks!</h1>
-      <p>I'll get back to you as soon as possible</p>
-      <nuxt-link to="/">Go back home</nuxt-link>
+    <div class="page-heading-section">
+        <h1>Thanks!</h1>
+        <p>I'll get back to you as soon as possible</p>
+        <nuxt-link to="/">Go back home</nuxt-link>
     </div>
   </div>
 </template>

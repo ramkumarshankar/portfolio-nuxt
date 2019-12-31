@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "My pioneering Nuxt.js project",
+  "description": "The portfolio of creative developer and designer, Ramkumar Shankar. Check out his latest projects and open source work.",
   "author": "Ramkumar Shankar",
   "private": true,
   "scripts": {
