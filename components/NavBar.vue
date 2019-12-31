@@ -72,8 +72,6 @@ header {
     text-decoration: none;
     color: $text-color;
     font-size: 1.125em;
-    color: $text-color;
-    padding-bottom: 5px;
   }
 
   .site-title {
