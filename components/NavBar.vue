@@ -1,7 +1,7 @@
 <template>
   <header :class="navFixed ? 'fixed' : ''">
-    <nuxt-link to="/">
-      <h1 :class="navTheme" class="site-title">Ramkumar Shankar</h1>
+    <nuxt-link :class="navTheme" class="site-title" to="/">
+      Ramkumar Shankar
     </nuxt-link>
     <nav>
       <ul>
@@ -70,9 +70,13 @@ header {
 
   a {
     text-decoration: none;
+    color: $text-color;
+    font-size: 1.125em;
+    color: $text-color;
+    padding-bottom: 5px;
   }
 
-  h1.site-title {
+  .site-title {
     font-size: 1.414em;
     font-weight: 500;
     margin-bottom: 20px;
@@ -89,17 +93,12 @@ header {
       li {
         display: inline;
 
-        // padding-right: 30px
         &:not(:last-child) {
           padding-right: 30px;
         }
       }
 
       a {
-        text-decoration: none;
-        font-size: 1.125em;
-        color: $text-color;
-        padding-bottom: 5px;
 
         &.router-link-exact-active {
           box-shadow: inset 0px -2px 0 0 $button-color;
