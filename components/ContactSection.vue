@@ -43,6 +43,11 @@ div.contact-block {
   position: relative;
   overflow: hidden;
 
+  @media only screen and (prefers-color-scheme: dark) {
+    border: 2px solid lighten($snow-dark, 10);
+    background: $snow-dark;
+  }
+
   img {
     position: absolute;
     right: 40px;

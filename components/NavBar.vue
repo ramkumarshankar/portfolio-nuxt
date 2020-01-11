@@ -65,13 +65,18 @@ header {
   }
   
   .light {
-    color: #fff;
+    @media only screen and (prefers-color-scheme: light) {
+      color: #fff;
+    }
   }
 
   a {
     text-decoration: none;
     color: $text-color;
     font-size: 1.125em;
+    @media only screen and (prefers-color-scheme: dark) {
+      color: $text-color-dark; 
+    }
   }
 
   .site-title {
@@ -111,6 +116,9 @@ header {
       button {
         font-size: 1.125em;
         color: $text-color;
+        @media only screen and (prefers-color-scheme: dark) {
+          color: $text-color-dark; 
+        }
       }
     }
   }

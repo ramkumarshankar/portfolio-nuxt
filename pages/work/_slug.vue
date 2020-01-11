@@ -134,6 +134,9 @@ div.project {
     color: $tag-color;
     width: auto !important;
     border-radius: 2px;
+    @media only screen and (prefers-color-scheme: dark) {
+      color: $tag-color-dark;
+    }
   }
 
   img {

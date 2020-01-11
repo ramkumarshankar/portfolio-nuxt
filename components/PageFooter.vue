@@ -49,7 +49,7 @@ export default {
 
 <style lang="stylus" scoped>
 footer {
-  background-color: #1B1B1B;
+  background-color: #0B0B0B;
 
   &.fixed {
     position: fixed;
@@ -59,7 +59,6 @@ footer {
   }
 
   div.footer-inner {
-    background-color: #1B1B1B;
     margin: auto;
     display: flex;
     justify-content: flex-end;

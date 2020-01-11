@@ -41,6 +41,10 @@ export default {
   border-radius: 2px;
   border: $image-border-style;
 
+  @media only screen and (prefers-color-scheme: dark) {
+    border: $image-border-style-dark;
+  }
+
   img {
     width: 100%;
     object-fit: cover;

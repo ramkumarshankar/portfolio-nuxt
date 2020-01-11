@@ -60,6 +60,9 @@ export default {
       margin-bottom: 10px;
       border-radius: 2px;
       border: $image-border-style;
+      @media only screen and (prefers-color-scheme: dark) {
+        border: $image-border-style-dark;
+      }
 
       &::after {
         content: "";

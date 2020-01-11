@@ -7,11 +7,18 @@ $text-color = #323132
 $text-color-light = #424142
 $text-color-lighter = #727172
 
+$text-color-dark = #fff
+$text-color-dark-light = #e2e2e2
+$text-color-dark-lighter = #d2d2d2
+
 body, h1, h2, h3, h4, h5, h6
   font-family: $base-heading-font-family
   font-weight: $base-heading-font-weight
   color: $text-color 
   line-height: $base-line-height
+  @media only screen and (prefers-color-scheme: dark) {
+    color: $text-color-dark 
+  }
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
@@ -33,6 +40,9 @@ h3 {
     text-transform: uppercase;
     font-weight: 600;
     color: $text-color-lighter;
+    @media only screen and (prefers-color-scheme: dark) {
+      color: $text-color-dark-lighter; 
+    }
   }
 }
 
@@ -48,9 +58,23 @@ p, input, textarea
   font-size: 1.125em
   margin-bottom: 20px
 
+  @media only screen and (prefers-color-scheme: dark) {
+    color: $text-color-dark-light; 
+  }
+
+input, textarea {
+  @media only screen and (prefers-color-scheme: dark) {
+    background: #2a2a2a;
+  }
+}
+
+
 ul
   font-family: $base-body-font-family 
   color: $text-color
+  @media only screen and (prefers-color-scheme: dark) {
+    color: $text-color-dark; 
+  }
   line-height: $base-line-height
   list-style-type: circle
   font-size: 1.125em
@@ -64,6 +88,9 @@ span
 button, a
   color: $link-color
   font-family: $base-body-font-family
+  @media only screen and (prefers-color-scheme: dark) {
+    color: $link-color-dark;
+  }
 
 a.footer-button {
   text-decoration: none

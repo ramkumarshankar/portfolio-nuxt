@@ -68,19 +68,26 @@ input {
   width: 100%;
   font-size: 1.125em;
   padding: 10px 10px;
-  border: 1px solid #979797;
+  border: 1px solid darken($snow, 20);
   // box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.50)
   border-radius: 2px;
+
+  @media only screen and (prefers-color-scheme: dark) {
+    border: 1px solid lighten($snow-dark, 20);
+  }
 }
 
 textarea {
   width: 100%;
   font-size: 1.125em;
   padding: 10px 10px;
-  border: 1px solid #979797;
-  // box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.50)
+  border: 1px solid darken($snow, 20);
+  resize: vertical;
   border-radius: 2px;
   height: 200px;
+  @media only screen and (prefers-color-scheme: dark) {
+    border: 1px solid lighten($snow-dark, 20);
+  }
 }
 
 div.message {

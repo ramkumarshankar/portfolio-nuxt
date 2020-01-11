@@ -64,12 +64,22 @@ div.filterMenu {
           color: $link-color;
           box-shadow: inset 0px -2px 0 0 $link-color;
           transition: box-shadow 0.2s ease-out;
+
+          @media only screen and (prefers-color-scheme: dark) {
+            color: $link-color-dark;
+            box-shadow: inset 0px -2px 0 0 $link-color-dark;
+          }
         }
 
         &:hover {
           color: $link-color;
           box-shadow: inset 0px -2px 0 0 $link-color;
           transition: box-shadow 0.2s ease-out;
+
+          @media only screen and (prefers-color-scheme: dark) {
+            color: $link-color-dark;
+            box-shadow: inset 0px -2px 0 0 $link-color-dark;
+          }
         }
       }
     }

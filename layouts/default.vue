@@ -22,6 +22,10 @@ export default {
 <style lang="stylus">
 html {
   box-sizing: border-box;
+
+  @media only screen and (prefers-color-scheme: dark) {
+    background: $page-background-dark;
+  }
 }
 
 *,
