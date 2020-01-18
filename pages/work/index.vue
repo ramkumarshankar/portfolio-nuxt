@@ -38,7 +38,7 @@ export default {
           "project.image",
           "project.link"
         ],
-        orderings: "[document.last_publication_date desc]",
+        orderings: "[document.first_publication_date desc]",
         // keep page size large to get all projects
         pageSize: 100
       });
