@@ -17,6 +17,16 @@
             <span class="awards-year">{{ $prismic.richTextAsPlain(award.award_year) }}</span>
           </div>
         </div>
+        <div class="page-heading-section">
+          <prismic-rich-text :field="speakingHeading" />
+        </div>
+        <div class="speaking-section">
+          <div v-for="(entry, index) in speakingEvents" :key="index" class="speaking-row">
+            <span>{{ $prismic.richTextAsPlain(entry.speaking_topic) }}</span>
+            <span class="speaking-event">{{ $prismic.richTextAsPlain(entry.speaking_event) }}</span>
+            <span class="speaking-year">{{ $prismic.richTextAsPlain(entry.speaking_year) }}</span>
+          </div>
+        </div>
       </section>
     </div>
   </div>
@@ -40,13 +50,17 @@ export default {
       const bodyText = document.text;
       const awards = document.body[0].items;
       const awardsHeading = document.body[0].primary.awards_heading;
+      const speakingEvents = document.body[1].items;
+      const speakingHeading = document.body[1].primary.speaking_heading;
       return {
         docId: docId,
         title: title,
         highlight: highlight,
         bodyText: bodyText,
         awardsHeading: awardsHeading,
-        awards: awards
+        awards: awards,
+        speakingEvents: speakingEvents,
+        speakingHeading: speakingHeading
       };
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
@@ -60,11 +74,11 @@ div.about {
   section.about-section {
     margin-bottom: 80px;
 
-    div.awards-section {
+    div.awards-section, div.speaking-section {
       display: grid;
       grid-template-columns: 1fr;
 
-      div.awards-row {
+      div.awards-row, div.speaking-row {
         display: grid;
         grid-template-columns: 1fr 0.5fr 0.5fr;
         padding: 20px 0px;
@@ -73,17 +87,13 @@ div.about {
         @media screen and (max-width: 600px) {
           grid-template-columns: 1fr !important;
 
-          span.awards-org, span.awards-year {
+          span.awards-org, span.awards-year, span.speaking-event, span.speaking-year {
             justify-self: start !important;
             color: $text-color-lighter;
           }
         }
 
-        span.awards-org {
-          justify-self: end;
-        }
-
-        span.awards-year {
+        span.awards-org, span.awards-year, span.speaking-event, span.speaking-year {
           justify-self: end;
         }
       }
