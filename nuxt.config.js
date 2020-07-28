@@ -4,6 +4,7 @@ import pkg from './package'
 require('dotenv').config()
 
 export default {
+  target: 'static',
   mode: 'universal',
 
   env: {
