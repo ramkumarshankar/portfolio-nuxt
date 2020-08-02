@@ -29,9 +29,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'NavBar',
-  props: {
-    isFixed: Boolean
-  },
   computed: {
     ...mapState({
       navFixed: state => state.nav.fixed,
