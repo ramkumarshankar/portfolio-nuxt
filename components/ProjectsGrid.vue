@@ -3,8 +3,8 @@
     <project-tile
       v-for="(item, index) in projects"
       :key="'project-item-' + index"
-      :title="$prismic.richTextAsPlain(item.title)"
-      :description="$prismic.richTextAsPlain(item.short_description)"
+      :title="$prismic.asText(item.title)"
+      :description="$prismic.asText(item.short_description)"
       :image="item.image"
       :link="item.link"
       :tags="item.tags"

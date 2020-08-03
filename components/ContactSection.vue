@@ -1,7 +1,7 @@
 <template>
   <div class="contact-block">
     <div class="contact-heading">
-      <h1>{{ $prismic.richTextAsPlain(heading) }}</h1>
+      <h1>{{ $prismic.asText(heading) }}</h1>
       <prismic-rich-text :field="text" />
     </div>
     <img src="~/assets/images/undraw_mail_box.svg">

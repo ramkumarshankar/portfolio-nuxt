@@ -29,9 +29,9 @@ export default {
     ProjectsGrid
     // Pagination
   },
-  async asyncData({app, error, req}) {
+  async asyncData({$prismic, error, req}) {
     try {
-      const response = await app.api.query(Prismic.Predicates.at("document.type", "project"), {
+      const response = await $prismic.api.query(Prismic.Predicates.at("document.type", "project"), {
         fetch: [
           "project.title",
           "project.short_description",

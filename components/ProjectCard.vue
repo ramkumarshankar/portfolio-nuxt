@@ -3,8 +3,8 @@
     <prismic-image :field="titleImage" class="title-image"/>
     <div v-if="projectCard.length > 0" class="project-card-details">
       <div v-for="(block, index) in projectCard" :key="index" class="card-block">
-        <span class="card-header">{{ $prismic.richTextAsPlain(block.card_field_title) }}</span>
-        <span>{{ $prismic.richTextAsPlain(block.card_field_text) }}</span>
+        <span class="card-header">{{ $prismic.asText(block.card_field_title) }}</span>
+        <span>{{ $prismic.asText(block.card_field_text) }}</span>
       </div>
     </div>
   </div>
