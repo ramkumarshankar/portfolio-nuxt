@@ -51,6 +51,9 @@ export default {
   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
   position: relative;
+  background: #0f2027;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  z-index: -10;
 }
 
 h1.hero-headline {
