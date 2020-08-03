@@ -23,10 +23,12 @@
     "cross-env": "^5.2.1",
     "nuxt": "^2.14.0",
     "nuxt-fontawesome": "^0.4.0",
-    "prismic-javascript": "^2.7.1"
+    "prismic-javascript": "^2.7.1",
+    "vue-code-highlight": "^0.7.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
+    "@nuxtjs/moment": "^1.6.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.3.0",

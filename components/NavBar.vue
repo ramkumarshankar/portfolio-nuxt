@@ -102,7 +102,7 @@ header {
 
       li {
         display: inline;
-        @media screen and (max-width: 450px) {
+        @media screen and (max-width: 480px) {
           display: block;
           margin-bottom: 10px;
         }
