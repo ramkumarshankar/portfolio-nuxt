@@ -53,7 +53,6 @@ export default {
   position: relative;
   background: #0f2027;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  z-index: -10;
 }
 
 h1.hero-headline {
@@ -61,6 +60,8 @@ h1.hero-headline {
   font-weight: 200;
   width: 100%;
   color: #FFF;
+  position: relative;
+  z-index: 10;
 
   @media screen and (max-width: 800px) {
     width: 100% !important;
@@ -73,6 +74,6 @@ canvas {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -100;
+  // z-index: -100;
 }
 </style>
