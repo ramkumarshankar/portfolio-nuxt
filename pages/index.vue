@@ -50,7 +50,6 @@ export default {
       })
       const document = result.data
       // Headline
-      // const headline = this.$prismic.asText(document.data.headline)
       const headline = document.headline
       const projectsHeadline = document.projects_headline
       // Get projects
@@ -58,11 +57,11 @@ export default {
       const displayedProjects = [];
       projectsResponse.forEach((project, index) => {
         displayedProjects.push({
+          uid: project.featured_projects.uid,
           title: project.featured_projects.data.title,
           short_description:
             project.featured_projects.data.short_description,
           image: project.featured_projects.data.image,
-          link: project.featured_projects,
           tags: project.featured_projects.tags
         });
       });
@@ -75,9 +74,8 @@ export default {
       const aboutSection = document.body[1].primary;
       const aboutHeadline = aboutSection.about_headline;
       const aboutSubheading = aboutSection.about_subheading;
-      // const aboutHeadline = document.body[2].primary;
-      // const contactText = contactSection.contacttext;
 
+      // console.log(displayedProjects)
       return {
         documentId: result.id,
         headline: headline,

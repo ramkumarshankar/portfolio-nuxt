@@ -1,6 +1,6 @@
 <template>
   <div class="tile">
-    <prismic-link :field="link">
+    <nuxt-link :to="'/work/' + slug">
       <div class="image-container">
         <prismic-image :field="image"/>
         <div class="overlay">
@@ -10,7 +10,7 @@
       <h2>{{ title }}</h2>
       <p>{{ description }}</p>
       <!-- <Tags :tags="this.$route.name === 'index' ? tags : null"/> -->
-    </prismic-link>
+    </nuxt-link>
   </div>
 </template>
 
@@ -30,10 +30,10 @@ export default {
       required: true,
       default: '',
     },
-    link: {
-      type: Object,
+    slug: {
+      type: String,
       required: true,
-      default: () => {},
+      default: "",
     },
     image: {
       type: Object,

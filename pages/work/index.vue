@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Prismic from "prismic-javascript"
 import ProjectsGrid from "@/components/ProjectsGrid.vue";
 import FilterMenu from "@/components/FilterMenu.vue";
 // import Pagination from "@/components/Pagination.vue";
@@ -31,12 +30,11 @@ export default {
   },
   async asyncData({$prismic, error, req}) {
     try {
-      const response = await $prismic.api.query(Prismic.Predicates.at("document.type", "project"), {
+      const response = await $prismic.api.query($prismic.predicates.at("document.type", "project"), {
         fetch: [
           "project.title",
           "project.short_description",
-          "project.image",
-          "project.link"
+          "project.image"
         ],
         orderings: "[document.first_publication_date desc]",
         // keep page size large to get all projects
@@ -46,11 +44,10 @@ export default {
       const allProjects = [];
       projects.forEach(projectItem => {
         allProjects.push({
-          id: projectItem.id,
+          uid: projectItem.uid,
           title: projectItem.data.title,
           short_description: projectItem.data.short_description,
           image: projectItem.data.image,
-          link: projectItem.data.link,
           tags: projectItem.tags
         });
       });

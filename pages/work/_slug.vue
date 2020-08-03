@@ -122,13 +122,14 @@ div.project {
   }
 
   h1.page-headline {
+    margin-top: 0px;
     margin-bottom: 20px;
   }
 
   .tag {
     margin-top: 5px;
     // margin-right: 10px
-    font-size: 0.75em;
+    font-size: 0.9em;
     text-transform: uppercase;
     font-weight: 700;
     color: $tag-color;
