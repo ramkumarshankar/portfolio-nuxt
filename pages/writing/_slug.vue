@@ -69,7 +69,7 @@ article.article-page {
     font-weight: 700;
     color: $tag-color;
     width: auto !important;
-    border-radius: 2px;
+    margin-bottom: 5px;
     @media only screen and (prefers-color-scheme: dark) {
       color: $tag-color-dark;
     }

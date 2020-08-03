@@ -2,8 +2,7 @@
   <div class="writing">
     <div class="container">
       <h1 class="page-headline">Writing</h1>
-      <p v-if="articles.length === 0">Nothing here yet. Check back later!</p>
-      <ArticlesList v-else :articles="articles" />
+      <ArticlesList :articles="articles" />
     </div>
   </div>
 </template>
@@ -58,10 +57,6 @@ div.writing {
   h1.page-headline {
     margin-top: 50px;
     margin-bottom: 20px;
-  }
-
-  p {
-    margin-bottom: 50px;
   }
 }
 </style>

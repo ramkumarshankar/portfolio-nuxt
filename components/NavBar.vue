@@ -8,9 +8,10 @@
         <li>
           <nuxt-link :class="navTheme" to="/work">Work</nuxt-link>
         </li>
-        <li>
+        <!-- Temporarily hide writing link until posts are ready -->
+        <!-- <li>
           <nuxt-link :class="navTheme" to="/writing">Writing</nuxt-link>
-        </li>
+        </li> -->
         <li>
           <nuxt-link :class="navTheme" to="/about">About</nuxt-link>
         </li>

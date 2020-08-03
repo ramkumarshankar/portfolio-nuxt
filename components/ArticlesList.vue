@@ -1,6 +1,7 @@
 <template>
   <section class="articles-list">
-    <article v-for="article in articles" :key="article.id">
+    <p v-if="articles.length === 0">Nothing here yet. Check back later!</p>
+    <article v-else v-for="article in articles" :key="article.id">
       <span class="meta">{{ $moment(article.published_date).format('Do MMMM YYYY') }}</span>
       <nuxt-link :to="'/writing/'+article.uid">
         <h2>{{ $prismic.asText(article.title) }}</h2>
@@ -25,8 +26,10 @@ export default {
 
 <style lang="stylus" scoped>
 section.articles-list {
+  margin-bottom: 50px;
+
   article {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     a {
       color: $text-color
 
@@ -35,7 +38,7 @@ section.articles-list {
       }
 
       h2 {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
         line-height: 1.3em;
       }
       p {
@@ -43,13 +46,11 @@ section.articles-list {
       }
     }
     span.meta {
-      // margin-right: 10px
       font-size: 0.9em;
-      // text-transform: uppercase;
       font-weight: 700;
       color: $tag-color;
       width: auto !important;
-      border-radius: 2px;
+      margin-bottom: 5px;
       @media only screen and (prefers-color-scheme: dark) {
         color: $tag-color-dark;
       }
