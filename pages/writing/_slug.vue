@@ -1,7 +1,7 @@
 <template>
   <article class="container article-page">
     <span class="meta">{{ $moment(published_date).format('Do MMMM YYYY') }}</span>
-    <h1>Nuxt.js will automatically prefetch the code splitted page. This feature is inspired by quicklink.js by Google Chrome Labs.</h1>
+    <h1>{{ $prismic.asText(title) }}</h1>
     <p class="summary">{{ summary }}</p>
     <section
       v-for="(slice, index) in slices"

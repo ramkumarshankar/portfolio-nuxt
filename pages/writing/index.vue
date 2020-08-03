@@ -2,7 +2,8 @@
   <div class="writing">
     <div class="container">
       <h1 class="page-headline">Writing</h1>
-      <ArticlesList :articles="articles" />
+      <p v-if="articles.length === 0">Nothing here yet. Check back later!</p>
+      <ArticlesList v-else :articles="articles" />
     </div>
   </div>
 </template>
@@ -29,7 +30,7 @@ export default {
           "article.uid"
         ],
         orderings: "[document.first_publication_date desc]",
-        // keep page size large to get all projects
+        // keep page size large to get all articles
         pageSize: 100
       });
       const articles = response.results;
@@ -52,9 +53,15 @@ export default {
 }
 </script>
 
-<style>
-h1.page-headline {
-  margin-top: 50px;
-  margin-bottom: 20px;
+<style lang="stylus" scoped>
+div.writing {
+  h1.page-headline {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 50px;
+  }
 }
 </style>
