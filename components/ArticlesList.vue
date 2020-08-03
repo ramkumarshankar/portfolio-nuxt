@@ -26,7 +26,7 @@ export default {
 <style lang="stylus" scoped>
 section.articles-list {
   article {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     a {
       color: $text-color
 

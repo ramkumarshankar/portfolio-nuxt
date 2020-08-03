@@ -49,8 +49,8 @@ class Circle {
 
 class MousePoint {
   constructor() {
-    this.x = 0;
-    this.y = 0;
+    this.x = -500;
+    this.y = -500;
   }
 
   set(xPos, yPos) {
@@ -59,39 +59,10 @@ class MousePoint {
   }
 
   reset() {
-    this.x = 0;
-    this.y = 0;
+    this.x = -500;
+    this.y = -500;
   }
 }
-
-// class Particle {
-//   constructor() {
-//     this.velocity = {
-//       x: Math.random() < 0.5 ? Math.random() : Math.random() * -1,
-//       y: Math.random() < 0.5 ? Math.random() : Math.random() * -1
-//     };
-//     this.position = {
-//       x: 0,
-//       y: 0
-//     };
-//     this.radius = 2;
-//     this.color = "#CCCCCC";
-//   }
-
-//   update(index) {
-//     // console.log(canvasEl.clientWidth + ' - ' + canvasEl.clientHeight)
-//     this.position.x += this.velocity.x + noise2D(index, index);
-//     this.position.y += this.velocity.y + noise2D(index, index);
-//   }
-
-//   draw(ctx) {
-//     ctx.fillStyle = this.color;
-//     ctx.beginPath();
-//     ctx.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
-//     ctx.fill();
-//     ctx.closePath();
-//   }
-// }
 
 export default class LandingCanvas {
   constructor(canvasEl) {
@@ -105,13 +76,9 @@ export default class LandingCanvas {
 
   generatePoints() {
     this.circles = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 70; i++) {
       this.circles.push(new Circle(this.canvasEl, i));
     }
-    // this.particles = [];
-    // for (let j = 0; j < numPoints; j++) {
-    //   this.particles.push(new Particle());
-    // }
   }
 
   onMouseMove(xPos, yPos) {
