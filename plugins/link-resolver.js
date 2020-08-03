@@ -9,6 +9,11 @@ export default doc => {
     return '/work/' + doc.uid
   }
 
+  // If it is a Repeatable Custom Type with the API ID of "article" (must contain a UID field)
+  if (doc.type === 'article') {
+    return '/writing/' + doc.uid
+  }
+
   // Default to the root
   return '/'
 }

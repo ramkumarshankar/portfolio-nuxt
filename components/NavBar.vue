@@ -8,6 +8,10 @@
         <li>
           <nuxt-link :class="navTheme" to="/work">Work</nuxt-link>
         </li>
+        <!-- Temporarily hide writing link until posts are ready -->
+        <!-- <li>
+          <nuxt-link :class="navTheme" to="/writing">Writing</nuxt-link>
+        </li> -->
         <li>
           <nuxt-link :class="navTheme" to="/about">About</nuxt-link>
         </li>
@@ -17,7 +21,8 @@
             class="secondary"
             to="/contact"
             tag="button"
-          >Say hello</nuxt-link>
+            >Say hello</nuxt-link
+          >
         </li>
       </ul>
     </nav>
@@ -55,12 +60,18 @@ header {
     right: 0
   }
 
+  // This breakpoint matches the container
   @media screen and (max-width: 800px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100% !important;
   }
-  
+
+  @media screen and (max-width: 700px) {
+    display: grid;
+    grid-template-rows: repeat(2,auto);
+  }
+
   .light {
     @media only screen and (prefers-color-scheme: light) {
       color: #fff;
@@ -72,7 +83,7 @@ header {
     color: $text-color;
     font-size: 1.125em;
     @media only screen and (prefers-color-scheme: dark) {
-      color: $text-color-dark; 
+      color: $text-color-dark;
     }
   }
 
@@ -92,6 +103,10 @@ header {
 
       li {
         display: inline;
+        @media screen and (max-width: 480px) {
+          display: block;
+          margin-bottom: 10px;
+        }
 
         &:not(:last-child) {
           padding-right: 30px;
@@ -114,7 +129,7 @@ header {
         font-size: 1.125em;
         color: $text-color;
         @media only screen and (prefers-color-scheme: dark) {
-          color: $text-color-dark; 
+          color: $text-color-dark;
         }
       }
     }

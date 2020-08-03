@@ -47,7 +47,6 @@ export default {
 .hero-section {
   display: flex;
   flex-direction: column;
-  padding: 200px 0px;
   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
   position: relative;
@@ -58,6 +57,8 @@ export default {
 h1.hero-headline {
   font-family: $base-heading-font-family-serif;
   font-weight: 200;
+  margin-top: 200px;
+  margin-bottom: 200px;
   width: 100%;
   color: #FFF;
   position: relative;
@@ -65,6 +66,11 @@ h1.hero-headline {
 
   @media screen and (max-width: 800px) {
     width: 100% !important;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 300px;
+    margin-bottom: 100px;
   }
 }
 

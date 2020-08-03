@@ -6,7 +6,7 @@
       :title="$prismic.asText(item.title)"
       :description="$prismic.asText(item.short_description)"
       :image="item.image"
-      :link="item.link"
+      :slug="item.uid"
       :tags="item.tags"
     />
   </transition-group>
