@@ -2,7 +2,7 @@
   <div class="contact">
     <div class="container">
       <div class="page-heading-section">
-        <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
+        <h1>{{ $prismic.asText(title) }}</h1>
         <prismic-rich-text :field="subheading"/>
       </div>
       <section class="contact-section">
@@ -26,9 +26,9 @@ export default {
   components: {
     ContactForm
   },
-  async asyncData({ app, error, req }) {
+  async asyncData({ $prismic, error, req }) {
     try {
-      const result = await app.api.getSingle('contactpage')
+      const result = await $prismic.api.getSingle('contactpage')
       const document = result.data
       const docId = result.id
       const title = document.title

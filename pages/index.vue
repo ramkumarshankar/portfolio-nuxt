@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Hero :headline="$prismic.richTextAsPlain(headline)"/>
+    <Hero :headline="$prismic.asText(headline)"/>
     <div class="container">
       <prismic-rich-text :field="projectsHeadline" class="headline" />
       <div class="projects-section">
@@ -39,9 +39,9 @@ export default {
     ProjectsGrid,
     ContactSection
   },
-  async asyncData({app, error, req}) {
+  async asyncData({$prismic, req, error}) {
     try {
-      const result = await app.api.getSingle("homepage", {
+      const result = await $prismic.api.getSingle("homepage", {
         fetchLinks: [
           "project.title",
           "project.image",
@@ -50,7 +50,7 @@ export default {
       })
       const document = result.data
       // Headline
-      // const headline = this.$prismic.richTextAsPlain(document.data.headline)
+      // const headline = this.$prismic.asText(document.data.headline)
       const headline = document.headline
       const projectsHeadline = document.projects_headline
       // Get projects

@@ -44,11 +44,7 @@ export default {
    ** Plugins to load before mounting the App
    */
 
-  plugins: [
-    '~/plugins/prismic-api.js',
-    '~/plugins/link-resolver.js',
-    '~/plugins/prismic-vue.js'
-  ],
+  plugins: [],
 
   /*
    ** Nuxt.js modules
@@ -57,6 +53,7 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
+    '@nuxtjs/prismic',
     ['nuxt-fontawesome', {
       component: 'fa', 
       imports: [
@@ -74,6 +71,13 @@ export default {
       }
     ]
   ],
+
+  prismic: {
+    endpoint: 'https://ramkumarshankar.cdn.prismic.io/api/v2',
+    preview: process.env.NODE_ENV !== 'production' ? true : false,
+    linkResolver: '~/plugins/link-resolver',
+    htmlSerializer: '~/plugins/html-serializer',
+  },
 
   router: {
     middleware: 'navMenu'

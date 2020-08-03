@@ -2,7 +2,7 @@
   <div class="about">
     <div class="container">
       <div class="page-heading-section">
-        <h1>{{ $prismic.richTextAsPlain(title) }}</h1>
+        <h1>{{ $prismic.asText(title) }}</h1>
         <prismic-rich-text :field="highlight"/>
       </div>
       <section class="about-section">
@@ -12,9 +12,9 @@
         </div>
         <div class="awards-section">
           <div v-for="(award, index) in awards" :key="index" class="awards-row">
-            <span>{{ $prismic.richTextAsPlain(award.award_name) }} / <span class="semibold">{{ $prismic.richTextAsPlain(award.award_work) }}</span></span>
-            <span class="awards-org">{{ $prismic.richTextAsPlain(award.award_organisation) }}</span>
-            <span class="awards-year">{{ $prismic.richTextAsPlain(award.award_year) }}</span>
+            <span>{{ $prismic.asText(award.award_name) }} / <span class="semibold">{{ $prismic.asText(award.award_work) }}</span></span>
+            <span class="awards-org">{{ $prismic.asText(award.award_organisation) }}</span>
+            <span class="awards-year">{{ $prismic.asText(award.award_year) }}</span>
           </div>
         </div>
         <div class="page-heading-section">
@@ -22,9 +22,9 @@
         </div>
         <div class="speaking-section">
           <div v-for="(entry, index) in speakingEvents" :key="index" class="speaking-row">
-            <span>{{ $prismic.richTextAsPlain(entry.speaking_topic) }}</span>
-            <span class="speaking-event">{{ $prismic.richTextAsPlain(entry.speaking_event) }}</span>
-            <span class="speaking-year">{{ $prismic.richTextAsPlain(entry.speaking_year) }}</span>
+            <span>{{ $prismic.asText(entry.speaking_topic) }}</span>
+            <span class="speaking-event">{{ $prismic.asText(entry.speaking_event) }}</span>
+            <span class="speaking-year">{{ $prismic.asText(entry.speaking_year) }}</span>
           </div>
         </div>
       </section>
@@ -40,9 +40,9 @@ export default {
       titleTemplate: '%s | About'
     }
   },
-  async asyncData({app, error, req}) {
+  async asyncData({$prismic, error, req}) {
     try {
-      const result = await app.api.getSingle("aboutpage")
+      const result = await $prismic.api.getSingle("aboutpage")
       const document = result.data
       const docId = result.id;
       const title = document.title;

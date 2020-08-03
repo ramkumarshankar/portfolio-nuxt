@@ -5,11 +5,11 @@
         {{ tag }}
         <span v-if="index !== tags.length -1">&nbsp;/&nbsp;</span>
       </span>
-      <h1 class="page-headline">{{ $prismic.richTextAsPlain(title) }}</h1>
-      <p>{{ $prismic.richTextAsPlain(description) }}</p>
+      <h1 class="page-headline">{{ $prismic.asText(title) }}</h1>
+      <p>{{ $prismic.asText(description) }}</p>
       <div v-if="ctaTitle && ctaTitle.length !== 0" class="cta-section">
         <prismic-link :field="ctaLink" class="cta_link" style="margin-top:100px">
-          <span>{{ $prismic.richTextAsPlain(ctaTitle) }}</span>
+          <span>{{ $prismic.asText(ctaTitle) }}</span>
         </prismic-link>
       </div>
       <project-card v-if="titleImage" :title-image="titleImage" :project-card="projectCard"/>
@@ -24,7 +24,7 @@
             <text-slice
               v-for="(item, paragraphSliceIndex) in slice.items"
               :key="'textslice-' + paragraphSliceIndex"
-              :heading="$prismic.richTextAsPlain(item.heading)"
+              :heading="$prismic.asText(item.heading)"
               :body="item.paragraph"
             />
           </template>
@@ -74,9 +74,9 @@ export default {
       titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title)
     }
   },
-  async asyncData({ app, params, error, req }) {
+  async asyncData({ $prismic, params, error, req }) {
     try {
-      const result = await app.api.getByUID('project', params.slug)
+      const result = await $prismic.api.getByUID('project', params.slug)
       const document = result.data
       const title = document.title
       const description = document.short_description
