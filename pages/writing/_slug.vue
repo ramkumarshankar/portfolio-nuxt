@@ -11,6 +11,11 @@
       <template v-if="slice.slice_type === 'rich_text'">
         <prismic-rich-text :field="slice.primary.content"/>
       </template>
+      <template v-else-if="slice.slice_type === 'blockquote'">
+        <blockquote v-for="(item, blockquoteIndex) in slice.items" :key="blockquoteIndex">
+          <prismic-rich-text :field="item.content"/>
+        </blockquote>
+      </template>
       <template v-else-if="slice.slice_type === 'code_snippet'">
         <div v-highlight v-for="(item, codeBlockIndex) in slice.items" :key="'codeBlock-' + codeBlockIndex">
           <pre :class="'language-'+item.language">

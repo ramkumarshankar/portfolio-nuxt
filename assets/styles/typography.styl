@@ -63,6 +63,26 @@ p, input, textarea
     color: $text-color-dark-light; 
   }
 
+blockquote {
+  margin-bottom: 20px
+  padding: 20px 20px 5px 20px;
+  border-left: 3px solid $default-gray;
+  background: $snow;
+  
+  @media only screen and (prefers-color-scheme: dark) {
+    background: $snow-dark;
+  }
+
+  p {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+}
+
 input, textarea {
   @media only screen and (prefers-color-scheme: dark) {
     background: #2a2a2a;
