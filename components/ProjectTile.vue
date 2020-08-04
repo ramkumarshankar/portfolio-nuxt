@@ -51,6 +51,19 @@ export default {
 
 <style lang="stylus" scoped>
 .tile {
+  &:hover {
+    div.image-container {
+      transform: scale(1.05);
+
+      img {
+        transform: scale(1.03)
+      }
+      div.overlay {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+  }
   a {
     text-decoration: none;
 
@@ -60,6 +73,7 @@ export default {
       margin-bottom: 10px;
       border-radius: 2px;
       border: $image-border-style;
+      transition: all 0.1s ease;
       @media only screen and (prefers-color-scheme: dark) {
         border: $image-border-style-dark;
       }
@@ -75,19 +89,8 @@ export default {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: all 0.3s ease-in;
+        transition: all 0.1s ease-in;
       }
-    }
-  }
-
-  &:hover {
-    a > div.image-container > img {
-      transform: scale(1.05)
-    }
-
-    a > div.image-container > div.overlay {
-      opacity: 1;
-      transform: scaleY(1);
     }
   }
 }
@@ -113,7 +116,7 @@ div.overlay {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
 
   div {
     // margin-right: 10px;
