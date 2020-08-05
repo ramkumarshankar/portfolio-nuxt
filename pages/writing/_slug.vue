@@ -20,9 +20,7 @@
       <template v-else-if="slice.slice_type === 'code_snippet'">
         <div v-highlight v-for="(item, codeBlockIndex) in slice.items" :key="'codeBlock-' + codeBlockIndex">
           <pre :class="'language-'+item.language">
-            <code>
-{{ $prismic.asText(item.snippet) }}
-            </code>
+            <code>{{ $prismic.asText(item.snippet) }}</code>
           </pre>
         </div>
       </template>
