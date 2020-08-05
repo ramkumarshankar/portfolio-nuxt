@@ -65,7 +65,7 @@ p, input, textarea
 
 blockquote {
   margin-bottom: 20px
-  padding: 20px 20px 5px 20px;
+  padding: 2em; // match the code block styling from prismjs
   border-left: 3px solid $default-gray;
   background: $snow;
   
@@ -75,6 +75,10 @@ blockquote {
 
   p {
     font-style: italic;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
   }
 
   strong {
