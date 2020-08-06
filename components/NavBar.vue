@@ -93,7 +93,6 @@ header {
   }
 
   nav {
-    margin-bottom: 20px;
 
     ul {
       display: inline-block;

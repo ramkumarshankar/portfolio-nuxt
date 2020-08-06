@@ -38,7 +38,7 @@ section.articles-list {
       }
 
       h2 {
-        margin-bottom: 0px;
+        margin-bottom: 5px;
         line-height: 1.3em;
       }
       p {
@@ -50,7 +50,7 @@ section.articles-list {
       font-weight: 700;
       color: $tag-color;
       width: auto !important;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       @media only screen and (prefers-color-scheme: dark) {
         color: $tag-color-dark;
       }
