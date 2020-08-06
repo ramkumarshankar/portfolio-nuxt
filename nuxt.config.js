@@ -26,7 +26,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:ital,wght@0,300;0,500;0,600;0,700;1,300&family=IBM+Plex+Serif:wght@200&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:ital,wght@0,300;0,500;0,600;0,700;1,300&family=IBM+Plex+Serif:wght@200&display=swap' }
     ]
   },
 
@@ -103,14 +103,20 @@ export default {
         }
       )
       const response = await api.query(
-        Prismic.Predicates.at('document.type', 'project'),
+        Prismic.Predicates.any('document.type', ['project', 'article']),
         {
-          // keep page size large to get all projects
+          // keep page size large to get all documents
           pageSize: 100
         }
       )
-      const projects = response.results
-      return projects.map(project => '/work/' + project.uid)
+      const pages = response.results
+      return pages.map(page => {
+        if (page.type === 'project') {
+          return '/work/' + page.uid;
+        } else if (page.type === 'article') {
+          return '/writing/' + page.uid;
+        }
+      })
     }
   },
 

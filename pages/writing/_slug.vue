@@ -9,7 +9,7 @@
       class="article-slice"
     >
       <template v-if="slice.slice_type === 'rich_text'">
-        <prismic-rich-text :field="slice.primary.content" />
+        <prismic-rich-text :field="slice.primary.content" :htmlSerializer="serializePrismicLabelsToSemanticHtml"/>
       </template>
       <template v-else-if="slice.slice_type === 'blockquote'">
         <blockquote>
@@ -37,8 +37,27 @@
 </template>
 
 <script>
+import prismicDOM from 'prismic-dom'
+
+const Elements = prismicDOM.RichText.Elements
+
+const serializePrismicLabelsToSemanticHtml = function (type, element, content, children) {
+  // Let's convert span tags to semantic html when possible
+  if (type === Elements.label) {
+    if (element.data.label === "code-inline") {
+      return `<code class="${element.data.label}">${children.join('')}</code>`;
+    }
+  }
+  return null;
+}
+
 export default {
   name: 'Article',
+  data() {
+    return {
+      serializePrismicLabelsToSemanticHtml
+    }
+  },
   async asyncData({ $prismic, params, error, req }) {
     try {
       const result = await $prismic.api.getByUID('article', params.slug)
