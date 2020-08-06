@@ -53,6 +53,11 @@ const serializePrismicLabelsToSemanticHtml = function (type, element, content, c
 
 export default {
   name: 'Article',
+  head() {
+    return {
+      titleTemplate: '%s | Writing | ' + prismicDOM.RichText.asText(this.title)
+    }
+  },
   data() {
     return {
       serializePrismicLabelsToSemanticHtml
