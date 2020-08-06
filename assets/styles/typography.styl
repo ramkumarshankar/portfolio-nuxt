@@ -94,18 +94,28 @@ input, textarea {
 }
 
 
-ul
+ul, ol {
   font-family: $base-body-font-family 
   color: $text-color
   @media only screen and (prefers-color-scheme: dark) {
     color: $text-color-dark; 
   }
   line-height: $base-line-height
-  list-style-type: circle
   font-size: 1.125em
+  margin-bottom: 20px;
+}
 
-li
-  list-style: disc inside
+ul {
+  li {
+    list-style: disc inside
+  }
+}
+
+ol {
+  li {
+    list-style: decimal inside
+  }
+}
 
 span
   font-family: $base-body-font-family
