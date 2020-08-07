@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
-    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/font-awesome": "^1.0.4",
     "@nuxtjs/prismic": "^1.2.3",
     "@nuxtjs/robots": "^2.4.2",

@@ -1,15 +1,9 @@
 import Prismic from 'prismic-javascript'
 import pkg from './package'
 
-require('dotenv').config()
-
 export default {
   target: 'static',
   mode: 'universal',
-
-  env: {
-    API_ACCESS_KEY: process.env.API_ACCESS_KEY
-  },
 
   /*
    ** Headers of the page
@@ -54,7 +48,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
     '@nuxtjs/prismic',
@@ -98,9 +91,6 @@ export default {
     routes: async () => {
       const api = await Prismic.getApi(
         'https://ramkumarshankar.cdn.prismic.io/api/v2',
-        {
-          accessToken: process.env.API_ACCESS_KEY
-        }
       )
       const response = await api.query(
         Prismic.Predicates.any('document.type', ['project', 'article']),
@@ -125,7 +115,7 @@ export default {
   },
 
   generate: {
-    fallback: '404.html'
+    fallback: true
   },
 
   /*
