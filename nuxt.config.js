@@ -125,30 +125,7 @@ export default {
   },
 
   generate: {
-    fallback: true,
-    routes: async () => {
-      const api = await Prismic.getApi(
-        'https://ramkumarshankar.cdn.prismic.io/api/v2',
-        {
-          accessToken: process.env.API_ACCESS_KEY
-        }
-      )
-      const response = await api.query(
-        Prismic.Predicates.any('document.type', ['project', 'article']),
-        {
-          // keep page size large to get all documents
-          pageSize: 100
-        }
-      )
-      const pages = response.results
-      return pages.map(page => {
-        if (page.type === 'project') {
-          return '/work/' + page.uid;
-        } else if (page.type === 'article') {
-          return '/writing/' + page.uid;
-        }
-      })
-    }
+    fallback: '404.html'
   },
 
   /*
