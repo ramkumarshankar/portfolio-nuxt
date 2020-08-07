@@ -74,7 +74,7 @@ export default {
       titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title)
     }
   },
-  async asyncData({ $prismic, params, error, req }) {
+  async asyncData({ $prismic, params, error }) {
     try {
       const result = await $prismic.api.getByUID('project', params.slug)
       const document = result.data

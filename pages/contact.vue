@@ -26,7 +26,7 @@ export default {
   components: {
     ContactForm
   },
-  async asyncData({ $prismic, error, req }) {
+  async asyncData({ $prismic, error }) {
     try {
       const result = await $prismic.api.getSingle('contactpage')
       const document = result.data

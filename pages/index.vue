@@ -39,7 +39,7 @@ export default {
     ProjectsGrid,
     ContactSection
   },
-  async asyncData({$prismic, req, error}) {
+  async asyncData({ $prismic, error }) {
     try {
       const result = await $prismic.api.getSingle("homepage", {
         fetchLinks: [
