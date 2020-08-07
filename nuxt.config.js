@@ -75,9 +75,7 @@ export default {
 
   prismic: {
     endpoint: 'https://ramkumarshankar.cdn.prismic.io/api/v2',
-    preview: process.env.NODE_ENV !== 'production' ? true : false,
-    linkResolver: '~/plugins/link-resolver',
-    htmlSerializer: '~/plugins/html-serializer',
+    preview: process.env.NODE_ENV !== 'production' ? true : false
   },
 
   router: {
