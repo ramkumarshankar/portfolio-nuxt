@@ -63,7 +63,7 @@ export default {
       serializePrismicLabelsToSemanticHtml
     }
   },
-  async asyncData({ $prismic, params, error, req }) {
+  async asyncData({ $prismic, params, error }) {
     try {
       const result = await $prismic.api.getByUID('article', params.slug)
       const article = result.data

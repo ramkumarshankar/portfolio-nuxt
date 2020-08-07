@@ -19,7 +19,7 @@ export default {
       titleTemplate: '%s | Writing'
     }
   },
-  async asyncData({$prismic, error, req}) {
+  async asyncData({ $prismic, error }) {
     try {
       const response = await $prismic.api.query($prismic.predicates.at("document.type", "article"), {
         fetch: [

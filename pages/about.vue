@@ -40,7 +40,7 @@ export default {
       titleTemplate: '%s | About'
     }
   },
-  async asyncData({$prismic, error, req}) {
+  async asyncData({ $prismic, error }) {
     try {
       const result = await $prismic.api.getSingle("aboutpage")
       const document = result.data

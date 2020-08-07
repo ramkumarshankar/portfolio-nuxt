@@ -125,6 +125,7 @@ export default {
   },
 
   generate: {
+    fallback: true,
     routes: async () => {
       const api = await Prismic.getApi(
         'https://ramkumarshankar.cdn.prismic.io/api/v2',
