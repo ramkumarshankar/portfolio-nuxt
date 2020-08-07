@@ -44,6 +44,14 @@ export default function (type, element, content, children) {
     return result
   }
 
+  // Let's convert span tags to semantic html when possible
+  // This applies to span tags with the label 'code-inline'
+  if (type === Elements.label) {
+    if (element.data.label === "code-inline") {
+      return `<code class="${element.data.label}">${children.join('')}</code>`;
+    }
+  }
+
   // Return null to stick with the default behavior for everything else
   return null
 }
