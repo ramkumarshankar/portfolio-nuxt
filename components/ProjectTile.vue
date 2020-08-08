@@ -2,7 +2,7 @@
   <div class="tile">
     <nuxt-link :to="'/work/' + slug">
       <div class="image-container">
-        <prismic-image :field="image"/>
+        <prismic-image :field="image" />
         <div class="overlay">
           <div>Read More</div>
         </div>
@@ -18,7 +18,7 @@
 // import Tags from "@/components/Tags";
 
 export default {
-  name: "ProjectTile",
+  name: 'ProjectTile',
   props: {
     title: {
       type: String,
@@ -33,7 +33,7 @@ export default {
     slug: {
       type: String,
       required: true,
-      default: "",
+      default: '',
     },
     image: {
       type: Object,
@@ -44,9 +44,9 @@ export default {
       type: Array,
       required: true,
       default: () => [],
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>

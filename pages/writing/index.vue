@@ -8,42 +8,45 @@
 </template>
 
 <script>
-import ArticlesList from "@/components/ArticlesList.vue"
+import ArticlesList from '@/components/ArticlesList.vue'
 export default {
-  name: "Writing",
+  name: 'Writing',
   components: {
-    ArticlesList
+    ArticlesList,
   },
   head() {
     return {
-      titleTemplate: '%s | Writing'
+      titleTemplate: '%s | Writing',
     }
   },
   async asyncData({ $prismic, error }) {
     try {
-      const response = await $prismic.api.query($prismic.predicates.at("document.type", "article"), {
-        fetch: [
-          "article.title",
-          "article.summary",
-          "article.published_date",
-          "article.uid"
-        ],
-        orderings: "[document.first_publication_date desc]",
-        // keep page size large to get all articles
-        pageSize: 100
-      });
-      const articles = response.results;
-      const articlesList = [];
-      articles.forEach(article => {
+      const response = await $prismic.api.query(
+        $prismic.predicates.at('document.type', 'article'),
+        {
+          fetch: [
+            'article.title',
+            'article.summary',
+            'article.published_date',
+            'article.uid',
+          ],
+          orderings: '[document.first_publication_date desc]',
+          // keep page size large to get all articles
+          pageSize: 100,
+        }
+      )
+      const articles = response.results
+      const articlesList = []
+      articles.forEach((article) => {
         articlesList.push({
           uid: article.uid,
           title: article.data.title,
           summary: article.data.summary,
-          published_date: new Date(article.first_publication_date)
+          published_date: new Date(article.first_publication_date),
         })
-      });
+      })
       return {
-        articles: articlesList
+        articles: articlesList,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })

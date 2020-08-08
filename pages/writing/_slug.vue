@@ -1,6 +1,8 @@
 <template>
   <article class="container article-page">
-    <span class="meta">{{ $moment(published_date).format('Do MMMM YYYY') }}</span>
+    <span class="meta">{{
+      $moment(published_date).format('Do MMMM YYYY')
+    }}</span>
     <h1>{{ $prismic.asText(title) }}</h1>
     <p class="summary">{{ summary }}</p>
     <section
@@ -15,11 +17,18 @@
         <blockquote>
           <prismic-rich-text :field="slice.primary.content" />
         </blockquote>
-        <prismic-rich-text v-if="slice.primary.source.length > 0" :field="slice.primary.source" />
+        <prismic-rich-text
+          v-if="slice.primary.source.length > 0"
+          :field="slice.primary.source"
+        />
       </template>
       <template v-else-if="slice.slice_type === 'code_snippet'">
-        <div v-highlight v-for="(item, codeBlockIndex) in slice.items" :key="'codeBlock-' + codeBlockIndex">
-          <pre :class="'language-'+item.language">
+        <div
+          v-highlight
+          v-for="(item, codeBlockIndex) in slice.items"
+          :key="'codeBlock-' + codeBlockIndex"
+        >
+          <pre :class="'language-' + item.language">
             <code>{{ $prismic.asText(item.snippet) }}</code>
           </pre>
         </div>
@@ -33,7 +42,7 @@
         />
       </template>
     </section>
-  </article>  
+  </article>
 </template>
 
 <script>
@@ -43,7 +52,7 @@ export default {
   name: 'Article',
   head() {
     return {
-      titleTemplate: '%s | Writing | ' + prismicDOM.RichText.asText(this.title)
+      titleTemplate: '%s | Writing | ' + prismicDOM.RichText.asText(this.title),
     }
   },
   async asyncData({ $prismic, params, error }) {
@@ -54,15 +63,15 @@ export default {
       const summary = article.summary
       const slices = article.body
       return {
-        title: title,
-        summary: summary,
+        title,
+        summary,
         published_date: new Date(result.first_publication_date),
-        slices: slices
+        slices,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
+  },
 }
 </script>
 

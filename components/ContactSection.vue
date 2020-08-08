@@ -4,32 +4,32 @@
       <h1>{{ $prismic.asText(heading) }}</h1>
       <prismic-rich-text :field="text" />
     </div>
-    <img src="~/assets/images/undraw_mail_box.svg">
+    <img src="~/assets/images/undraw_mail_box.svg" />
     <contact-form />
   </div>
 </template>
 
 <script>
-import ContactForm from "@/components/ContactForm.vue"
+import ContactForm from '@/components/ContactForm.vue'
 
 export default {
-  name: "ContactSection",
+  name: 'ContactSection',
   components: {
-    ContactForm
+    ContactForm,
   },
   props: {
     heading: {
       type: Array,
       default: () => [],
-      required: false
+      required: false,
     },
     text: {
       type: Array,
       default: () => [],
-      required: false
-    }
-  }
-};
+      required: false,
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -77,5 +77,4 @@ div.contact-block {
     }
   }
 }
-
 </style>

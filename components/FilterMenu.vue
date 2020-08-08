@@ -1,11 +1,12 @@
 <template>
   <div class="filterMenu">
     <ul>
-      <li v-for="(item, index) in tags" v-bind:key="index">
+      <li v-for="(item, index) in tags" :key="index">
         <a
-          v-bind:class="[index === activeIndex ? 'active' : '']"
-          v-on:click="updateSelection(index, item)"
-        >{{ item }}</a>
+          :class="[index === activeIndex ? 'active' : '']"
+          @click="updateSelection(index, item)"
+          >{{ item }}</a
+        >
       </li>
     </ul>
   </div>
@@ -13,34 +14,34 @@
 
 <script>
 export default {
-  name: "FilterMenu",
+  name: 'FilterMenu',
   props: {
     activeIndexFromParent: {
       type: Number,
-      default: 0
+      default: 0,
     },
     tags: {
       type: Array,
       required: true,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
       filterItems: [],
-      activeIndex: null
-    };
+      activeIndex: null,
+    }
   },
-  created () {
-    this.activeIndex = 0;
+  created() {
+    this.activeIndex = 0
   },
   methods: {
     updateSelection(index, item) {
-      this.activeIndex = index;
-      this.$emit("filterChanged", item);
-    }
-  }
-};
+      this.activeIndex = index
+      this.$emit('filterChanged', item)
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -85,5 +86,4 @@ div.filterMenu {
     }
   }
 }
-
 </style>

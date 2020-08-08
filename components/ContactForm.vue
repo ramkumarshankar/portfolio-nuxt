@@ -7,14 +7,20 @@
     action="/thanks"
   >
     <div class="form-input">
-      <input type="hidden" name="form-name" value="contact">
-      <div style="display: none">
+      <input type="hidden" name="form-name" value="contact" />
+      <div style="display: none;">
         <label for="botfield">Don’t fill this out if you're human</label>
-        <input id="botfield" type="text" name="botfield">
+        <input id="botfield" type="text" name="botfield" />
       </div>
       <div>
         <label for="name">Name</label>
-        <input id="name" type="text" name="name" placeholder="full name" required>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="full name"
+          required
+        />
       </div>
       <div>
         <label for="email">Email</label>
@@ -25,11 +31,11 @@
           placeholder="email address"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
-        >
+        />
       </div>
       <div class="message">
         <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="message" required/>
+        <textarea id="message" name="message" placeholder="message" required />
       </div>
     </div>
     <button class="primary" type="submit">Send Message</button>

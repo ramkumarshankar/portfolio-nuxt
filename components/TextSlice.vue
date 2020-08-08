@@ -4,14 +4,14 @@
       <h2>{{ heading }}</h2>
     </div>
     <div class="right-section">
-      <prismic-rich-text :field="body"/>
+      <prismic-rich-text :field="body" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TextSlice",
+  name: 'TextSlice',
   props: {
     heading: {
       type: String,
@@ -21,10 +21,10 @@ export default {
     body: {
       type: Array,
       required: false,
-      default: () => []
-    }
-  }
-};
+      default: () => [],
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>

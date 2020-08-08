@@ -13,21 +13,21 @@
 </template>
 
 <script>
-import ProjectTile from "@/components/ProjectTile.vue";
+import ProjectTile from '@/components/ProjectTile.vue'
 
 export default {
-  name: "ProjectGrid",
+  name: 'ProjectGrid',
   components: {
-    ProjectTile
+    ProjectTile,
   },
   props: {
     projects: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
-};
+      default: () => [],
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
