@@ -1,9 +1,10 @@
 <template>
   <section class="articles-list">
-    <p v-if="articles.length === 0">Nothing here yet. Check back later!</p>
-    <article v-else v-for="article in articles" :key="article.id">
-      <span class="meta">{{ $moment(article.published_date).format('Do MMMM YYYY') }}</span>
-      <nuxt-link :to="'/writing/'+article.uid">
+    <article v-for="article in articles" :key="article.id">
+      <span class="meta">{{
+        $moment(article.published_date).format('Do MMMM YYYY')
+      }}</span>
+      <nuxt-link :to="'/writing/' + article.uid">
         <h2>{{ $prismic.asText(article.title) }}</h2>
       </nuxt-link>
       <p>{{ article.summary }}</p>
@@ -13,14 +14,14 @@
 
 <script>
 export default {
-  name: "ArticlesList",
+  name: 'ArticlesList',
   props: {
     articles: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 }
 </script>
 

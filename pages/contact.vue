@@ -3,28 +3,23 @@
     <div class="container">
       <div class="page-heading-section">
         <h1>{{ $prismic.asText(title) }}</h1>
-        <prismic-rich-text :field="subheading"/>
+        <prismic-rich-text :field="subheading" />
       </div>
       <section class="contact-section">
         <contact-form />
       </section>
-      <img src="~/assets/images/undraw_mail_box.svg">
+      <img src="~/assets/images/undraw_mail_box.svg" />
     </div>
   </div>
 </template>
 
 <script>
-import ContactForm from "@/components/ContactForm.vue";
+import ContactForm from '@/components/ContactForm.vue'
 
 export default {
   name: 'Contact',
-  head() {
-    return {
-      titleTemplate: '%s | Contact'
-    }
-  },
   components: {
-    ContactForm
+    ContactForm,
   },
   async asyncData({ $prismic, error }) {
     try {
@@ -32,16 +27,21 @@ export default {
       const document = result.data
       const docId = result.id
       const title = document.title
-      const subheading = document.subheading;
+      const subheading = document.subheading
       return {
-        docId: docId,
-        title: title,
-        subheading: subheading
+        docId,
+        title,
+        subheading,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
+  },
+  head() {
+    return {
+      titleTemplate: '%s | Contact',
+    }
+  },
 }
 </script>
 
@@ -60,7 +60,7 @@ div.contact {
       display: none;
     }
   }
-  
+
   section.contact-section {
     position: relative;
     min-height: 300px;

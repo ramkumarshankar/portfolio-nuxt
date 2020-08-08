@@ -1,9 +1,18 @@
 <template>
-  <div :class="projectCard.length > 0 ? 'dark': 'transparent' " class="project-card">
-    <prismic-image :field="titleImage" class="title-image"/>
+  <div
+    :class="projectCard.length > 0 ? 'dark' : 'transparent'"
+    class="project-card"
+  >
+    <prismic-image :field="titleImage" class="title-image" />
     <div v-if="projectCard.length > 0" class="project-card-details">
-      <div v-for="(block, index) in projectCard" :key="index" class="card-block">
-        <span class="card-header">{{ $prismic.asText(block.card_field_title) }}</span>
+      <div
+        v-for="(block, index) in projectCard"
+        :key="index"
+        class="card-block"
+      >
+        <span class="card-header">{{
+          $prismic.asText(block.card_field_title)
+        }}</span>
         <span>{{ $prismic.asText(block.card_field_text) }}</span>
       </div>
     </div>
@@ -12,20 +21,20 @@
 
 <script>
 export default {
-  name: "ProjectCard",
+  name: 'ProjectCard',
   props: {
     titleImage: {
       type: Object,
       required: true,
-      default: () => {}
+      default: () => {},
     },
     projectCard: {
       type: Array,
       required: false,
-      default: () => []
-    }
-  }
-};
+      default: () => [],
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>

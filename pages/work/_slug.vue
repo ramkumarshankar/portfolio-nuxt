@@ -3,16 +3,24 @@
     <div class="container">
       <span v-for="(tag, index) in tags" :key="index" class="tag">
         {{ tag }}
-        <span v-if="index !== tags.length -1">&nbsp;/&nbsp;</span>
+        <span v-if="index !== tags.length - 1">&nbsp;/&nbsp;</span>
       </span>
       <h1 class="page-headline">{{ $prismic.asText(title) }}</h1>
       <p>{{ $prismic.asText(description) }}</p>
       <div v-if="ctaTitle && ctaTitle.length !== 0" class="cta-section">
-        <prismic-link :field="ctaLink" class="cta_link" style="margin-top:100px">
+        <prismic-link
+          :field="ctaLink"
+          class="cta_link"
+          style="margin-top: 100px;"
+        >
           <span>{{ $prismic.asText(ctaTitle) }}</span>
         </prismic-link>
       </div>
-      <project-card v-if="titleImage" :title-image="titleImage" :project-card="projectCard"/>
+      <project-card
+        v-if="titleImage"
+        :title-image="titleImage"
+        :project-card="projectCard"
+      />
 
       <section class="project-detail">
         <section
@@ -67,12 +75,7 @@ export default {
   components: {
     ProjectCard,
     TextSlice,
-    VideoEmbed
-  },
-  head() {
-    return {
-      titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title)
-    }
+    VideoEmbed,
   },
   async asyncData({ $prismic, params, error }) {
     try {
@@ -92,18 +95,23 @@ export default {
       }
       return {
         tags: displayedTags,
-        title: title,
-        description: description,
-        titleImage: titleImage,
-        projectCard: projectCard,
-        ctaTitle: ctaTitle,
-        ctaLink: ctaLink,
-        slices: slices
+        title,
+        description,
+        titleImage,
+        projectCard,
+        ctaTitle,
+        ctaLink,
+        slices,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
+  },
+  head() {
+    return {
+      titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title),
+    }
+  },
 }
 </script>
 

@@ -8,39 +8,39 @@
 </template>
 
 <script>
-import HeroCanvas from "@/components/HeroCanvas";
+import HeroCanvas from '@/components/HeroCanvas'
 
 export default {
-  name: "Hero",
+  name: 'Hero',
   props: {
     headline: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      canvasAnimation: null
-    };
+      canvasAnimation: null,
+    }
   },
   mounted() {
-    const heroCanvas = document.getElementById("heroCanvas");
+    const heroCanvas = document.getElementById('heroCanvas')
     heroCanvas.width =
-      heroCanvas.parentElement.clientWidth * window.devicePixelRatio;
+      heroCanvas.parentElement.clientWidth * window.devicePixelRatio
     heroCanvas.height =
-      heroCanvas.parentElement.clientHeight * window.devicePixelRatio;
-    this.canvasAnimation = new HeroCanvas(heroCanvas);
-    this.canvasAnimation.setup();
-    this.$refs.hero.addEventListener('mousemove', evt => {
+      heroCanvas.parentElement.clientHeight * window.devicePixelRatio
+    this.canvasAnimation = new HeroCanvas(heroCanvas)
+    this.canvasAnimation.setup()
+    this.$refs.hero.addEventListener('mousemove', (evt) => {
       this.canvasAnimation.onMouseMove(evt.clientX, evt.clientY)
     })
-    this.$refs.hero.addEventListener('mouseout', evt => {
+    this.$refs.hero.addEventListener('mouseout', (evt) => {
       this.canvasAnimation.onMouseOut()
     })
-    this.canvasAnimation.draw();
-  }
-};
+    this.canvasAnimation.draw()
+  },
+}
 </script>
 
 <style lang="stylus" scoped>

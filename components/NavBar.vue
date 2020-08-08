@@ -35,10 +35,10 @@ export default {
   name: 'NavBar',
   computed: {
     ...mapState({
-      navFixed: state => state.nav.fixed,
-      navTheme: state => state.nav.theme
-    })
-  }
+      navFixed: (state) => state.nav.fixed,
+      navTheme: (state) => state.nav.theme,
+    }),
+  },
 }
 </script>
 

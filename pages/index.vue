@@ -1,23 +1,31 @@
 <template>
   <div class="home">
-    <Hero :headline="$prismic.asText(headline)"/>
+    <Hero :headline="$prismic.asText(headline)" />
     <div class="container">
       <prismic-rich-text :field="projectsHeadline" class="headline" />
       <div class="projects-section">
         <h3 class="small-header">My Work</h3>
         <section class="projects-grid">
-          <projects-grid :projects="projects"/>
+          <projects-grid :projects="projects" />
         </section>
         <div class="button-block">
-          <nuxt-link to="/work" tag="button" class="primary">All projects</nuxt-link>
+          <nuxt-link to="/work" tag="button" class="primary"
+            >All projects</nuxt-link
+          >
         </div>
       </div>
       <div class="headline">
         <prismic-rich-text :field="aboutHeadline" />
         <prismic-rich-text :field="aboutSubheading" />
         <div class="button-block">
-          <nuxt-link to="/about" tag="button" class="primary min-width">About me</nuxt-link>
-          <a href="https://www.buymeacoffee.com/ramkumarshankar" target="_blank" rel="noopener">
+          <nuxt-link to="/about" tag="button" class="primary min-width"
+            >About me</nuxt-link
+          >
+          <a
+            href="https://www.buymeacoffee.com/ramkumarshankar"
+            target="_blank"
+            rel="noopener"
+          >
             <button class="outline min-width">Buy me a coffee &#10141;</button>
           </a>
         </div>
@@ -29,67 +37,66 @@
 </template>
 
 <script>
-import Hero from "@/components/Hero.vue";
-import ProjectsGrid from "@/components/ProjectsGrid.vue";
-import ContactSection from "@/components/ContactSection.vue";
+import Hero from '@/components/Hero.vue'
+import ProjectsGrid from '@/components/ProjectsGrid.vue'
+import ContactSection from '@/components/ContactSection.vue'
 
 export default {
   components: {
     Hero,
     ProjectsGrid,
-    ContactSection
+    ContactSection,
   },
   async asyncData({ $prismic, error }) {
     try {
-      const result = await $prismic.api.getSingle("homepage", {
+      const result = await $prismic.api.getSingle('homepage', {
         fetchLinks: [
-          "project.title",
-          "project.image",
-          "project.short_description"
-        ]
+          'project.title',
+          'project.image',
+          'project.short_description',
+        ],
       })
       const document = result.data
       // Headline
       const headline = document.headline
       const projectsHeadline = document.projects_headline
       // Get projects
-      const projectsResponse = document.body[0].items;
-      const displayedProjects = [];
+      const projectsResponse = document.body[0].items
+      const displayedProjects = []
       projectsResponse.forEach((project, index) => {
         displayedProjects.push({
           uid: project.featured_projects.uid,
           title: project.featured_projects.data.title,
-          short_description:
-            project.featured_projects.data.short_description,
+          short_description: project.featured_projects.data.short_description,
           image: project.featured_projects.data.image,
-          tags: project.featured_projects.tags
-        });
-      });
+          tags: project.featured_projects.tags,
+        })
+      })
       // Get contact section
-      const contactSection = document.body[2].primary;
-      const contactHeading = contactSection.contactheading;
-      const contactText = contactSection.contacttext;
+      const contactSection = document.body[2].primary
+      const contactHeading = contactSection.contactheading
+      const contactText = contactSection.contacttext
 
       // Get about section
-      const aboutSection = document.body[1].primary;
-      const aboutHeadline = aboutSection.about_headline;
-      const aboutSubheading = aboutSection.about_subheading;
+      const aboutSection = document.body[1].primary
+      const aboutHeadline = aboutSection.about_headline
+      const aboutSubheading = aboutSection.about_subheading
 
       // console.log(displayedProjects)
       return {
         documentId: result.id,
-        headline: headline,
-        projectsHeadline: projectsHeadline,
+        headline,
+        projectsHeadline,
         projects: displayedProjects,
-        aboutHeadline: aboutHeadline,
-        aboutSubheading: aboutSubheading,
-        contactHeading: contactHeading,
-        contactText: contactText
+        aboutHeadline,
+        aboutSubheading,
+        contactHeading,
+        contactText,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
+  },
 }
 </script>
 

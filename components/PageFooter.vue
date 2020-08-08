@@ -34,17 +34,17 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: 'Footer',
   data() {
     return {
-      twitterLink: "https://twitter.com/ramkumarshankar",
-      facebookLink: "http://www.facebook.com/687186453",
-      githubLink: "https://github.com/ramkumarshankar",
-      dribbbleLink: "http://www.dribbble.com/ramkumarshankar",
-      linkedinLink: "https://www.linkedin.com/in/ramkumarshankar"
-    };
-  }
-};
+      twitterLink: 'https://twitter.com/ramkumarshankar',
+      facebookLink: 'http://www.facebook.com/687186453',
+      githubLink: 'https://github.com/ramkumarshankar',
+      dribbbleLink: 'http://www.dribbble.com/ramkumarshankar',
+      linkedinLink: 'https://www.linkedin.com/in/ramkumarshankar',
+    }
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -99,5 +99,4 @@ footer {
     }
   }
 }
-
 </style>

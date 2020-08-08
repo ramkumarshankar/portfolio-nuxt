@@ -1,4 +1,4 @@
-import Vue from "vue";
-import VueCodeHighlight from 'vue-code-highlight';
+import Vue from 'vue'
+import VueCodeHighlight from 'vue-code-highlight'
 
-Vue.use(VueCodeHighlight);
+Vue.use(VueCodeHighlight)

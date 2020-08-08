@@ -14,8 +14,8 @@ export default {
   name: 'Layout',
   components: {
     NavBar,
-    PageFooter
-  }
+    PageFooter,
+  },
 }
 </script>
 
