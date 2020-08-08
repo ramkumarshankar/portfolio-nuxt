@@ -13,7 +13,7 @@
           class="cta_link"
           style="margin-top: 100px;"
         >
-          <span>{{ $prismic.asText(ctaTitle) }}</span>
+          <span>{{ ctaTitle }}</span>
         </prismic-link>
       </div>
       <project-card
