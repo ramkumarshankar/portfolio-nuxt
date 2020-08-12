@@ -107,7 +107,7 @@ export default class LandingCanvas {
     for (let j = 0; j < this.circles.length; j++) {
       const circle = this.circles[j]
       const distance = this.calculateDistance(this.mousePoint, circle.position)
-      if (distance < 400) {
+      if (distance < 150) {
         this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
         this.ctx.beginPath()
         this.ctx.moveTo(this.mousePoint.x, this.mousePoint.y)
