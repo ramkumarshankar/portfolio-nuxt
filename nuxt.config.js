@@ -77,6 +77,7 @@ export default {
 
   prismic: {
     endpoint: 'https://ramkumarshankar.cdn.prismic.io/api/v2',
+    preview: process.env.NODE_ENV !== 'production' ? true : false
   },
 
   router: {
