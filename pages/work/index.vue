@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ProjectsGrid from '@/components/ProjectsGrid.vue'
 import FilterMenu from '@/components/FilterMenu.vue'
 // import Pagination from "@/components/Pagination.vue";
@@ -26,7 +27,24 @@ export default {
   head() {
     return {
       titleTemplate: '%s | Work',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.baseTitle} | Work`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.baseTitle} | Work`,
+        },
+      ],
     }
+  },
+  computed: {
+    ...mapState({
+      baseTitle: (state) => state.baseTitle,
+    }),
   },
   async asyncData({ $prismic, error }) {
     try {

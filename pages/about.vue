@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'About',
   async asyncData({ $prismic, error }) {
@@ -81,7 +83,24 @@ export default {
   head() {
     return {
       titleTemplate: '%s | About',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.baseTitle} | About`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.baseTitle} | About`,
+        },
+      ],
     }
+  },
+  computed: {
+    ...mapState({
+      baseTitle: (state) => state.baseTitle,
+    }),
   },
 }
 </script>

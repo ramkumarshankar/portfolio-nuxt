@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import prismicDOM from 'prismic-dom'
 import ProjectCard from '@/components/ProjectCard.vue'
 import TextSlice from '@/components/TextSlice.vue'
@@ -110,7 +111,58 @@ export default {
   head() {
     return {
       titleTemplate: '%s | Work | ' + prismicDOM.RichText.asText(this.title),
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.baseTitle} | ${prismicDOM.RichText.asText(
+            this.title
+          )}`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.baseTitle} | ${prismicDOM.RichText.asText(
+            this.title
+          )}`,
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${prismicDOM.RichText.asText(this.description)}`,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `${prismicDOM.RichText.asText(this.description)}`,
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${this.titleImage.url}`,
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: `${this.titleImage.url}`,
+        },
+        {
+          hid: 'og:image:alt',
+          name: 'og:image:alt',
+          content: `${this.titleImage.alt}`,
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: `${this.titleImage.alt}`,
+        },
+      ],
     }
+  },
+  computed: {
+    ...mapState({
+      baseTitle: (state) => state.baseTitle,
+    }),
   },
 }
 </script>

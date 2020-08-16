@@ -53,6 +53,28 @@ export default {
   head() {
     return {
       titleTemplate: '%s | Writing | ' + prismicDOM.RichText.asText(this.title),
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${prismicDOM.RichText.asText(this.title)}`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${prismicDOM.RichText.asText(this.title)}`,
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.summary,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.summary,
+        },
+      ],
     }
   },
   async asyncData({ $prismic, params, error }) {
