@@ -13,13 +13,28 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
+
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'og:title', name: 'og:title', content: 'Ramkumar Shankar' },
+      { hid: 'og:description', name: 'og:description', content: pkg.description },
+      // { hid: 'og:image', name: 'og:image', content: 'https://ramkumar.me/images/social.png' },
+      // { hid: 'og:image:alt', name: 'og:image:alt', content: 'Page image for ramkumar.me' },
+      { hid: 'og:type', name: 'og:type', content: 'website' },
+      { hid: 'twitter:title', name: 'twitter:title', content: 'Ramkumar Shankar' },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@ramkumarshankar' },
+      { hid: 'twitter:creator', name: 'twitter:creator', content: '@ramkumarshankar' },
+      // { hid: 'twitter:image', name: 'twitter:image', content: 'https://ramkumar.me/images/social.png' },
+      // { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'Page image for ramkumar.me' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: "32x32", href: '/images/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: "16x16", href: '/images/favicon-16x16.png' },
+      { rel: 'apple-touch-icon', type: 'image/png', sizes: "180x180", href: '/images/apple-touch-icon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:ital,wght@0,300;0,500;0,600;0,700;1,300&family=IBM+Plex+Serif:wght@200&display=swap' }
     ]
   },

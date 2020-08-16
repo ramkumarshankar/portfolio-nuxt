@@ -1,4 +1,5 @@
 export const state = () => ({
+  baseTitle: 'Ramkumar Shankar',
   nav: {
     fixed: false,
     theme: 'light',

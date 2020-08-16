@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ContactForm from '@/components/ContactForm.vue'
 
 export default {
@@ -40,7 +41,24 @@ export default {
   head() {
     return {
       titleTemplate: '%s | Contact',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.baseTitle} | Contact me`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.baseTitle} | Contact me`,
+        },
+      ],
     }
+  },
+  computed: {
+    ...mapState({
+      baseTitle: (state) => state.baseTitle,
+    }),
   },
 }
 </script>

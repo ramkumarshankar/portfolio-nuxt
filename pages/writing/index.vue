@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ArticlesList from '@/components/ArticlesList.vue'
 export default {
   name: 'Writing',
@@ -17,7 +18,24 @@ export default {
   head() {
     return {
       titleTemplate: '%s | Writing',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.baseTitle} | Writing`,
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.baseTitle} | Writing`,
+        },
+      ],
     }
+  },
+  computed: {
+    ...mapState({
+      baseTitle: (state) => state.baseTitle,
+    }),
   },
   async asyncData({ $prismic, error }) {
     try {
