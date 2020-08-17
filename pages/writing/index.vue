@@ -37,30 +37,16 @@ export default {
       baseTitle: (state) => state.baseTitle,
     }),
   },
-  async asyncData({ $prismic, error }) {
+  async asyncData({ $content, error }) {
     try {
-      const response = await $prismic.api.query(
-        $prismic.predicates.at('document.type', 'article'),
-        {
-          fetch: [
-            'article.title',
-            'article.summary',
-            'article.published_date',
-            'article.uid',
-          ],
-          orderings: '[document.first_publication_date desc]',
-          // keep page size large to get all articles
-          pageSize: 100,
-        }
-      )
-      const articles = response.results
+      const articles = await $content('writing').fetch()
       const articlesList = []
       articles.forEach((article) => {
         articlesList.push({
-          uid: article.uid,
-          title: article.data.title,
-          summary: article.data.summary,
-          published_date: new Date(article.first_publication_date),
+          slug: article.slug,
+          title: article.title,
+          description: article.description,
+          published_date: new Date(article.createdAt),
         })
       })
       return {

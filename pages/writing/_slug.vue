@@ -1,95 +1,46 @@
 <template>
   <article class="container article-page">
     <span class="meta">{{
-      $moment(published_date).format('Do MMMM YYYY')
+      $moment(article.createdAt).format('Do MMMM YYYY')
     }}</span>
-    <h1>{{ $prismic.asText(title) }}</h1>
-    <p class="summary">{{ summary }}</p>
-    <section
-      v-for="(slice, index) in slices"
-      :key="'slice-' + index"
-      class="article-slice"
-    >
-      <template v-if="slice.slice_type === 'rich_text'">
-        <prismic-rich-text :field="slice.primary.content" />
-      </template>
-      <template v-else-if="slice.slice_type === 'blockquote'">
-        <blockquote>
-          <prismic-rich-text :field="slice.primary.content" />
-        </blockquote>
-        <prismic-rich-text
-          v-if="slice.primary.source.length > 0"
-          :field="slice.primary.source"
-        />
-      </template>
-      <template v-else-if="slice.slice_type === 'code_snippet'">
-        <div
-          v-highlight
-          v-for="(item, codeBlockIndex) in slice.items"
-          :key="'codeBlock-' + codeBlockIndex"
-        >
-          <pre :class="'language-' + item.language">
-            <code>{{ $prismic.asText(item.snippet) }}</code>
-          </pre>
-        </div>
-      </template>
-      <template v-else-if="slice.slice_type === 'image'">
-        <prismic-image
-          v-for="(item, imageSliceIndex) in slice.items"
-          :key="'imageslice-' + imageSliceIndex"
-          :field="item.image"
-          class="imageslice-item"
-        />
-      </template>
-    </section>
+    <nuxt-content :document="article" />
   </article>
 </template>
 
 <script>
-import prismicDOM from 'prismic-dom'
-
 export default {
   name: 'Article',
   head() {
     return {
-      titleTemplate: '%s | Writing | ' + prismicDOM.RichText.asText(this.title),
+      titleTemplate: '%s | Writing | ' + this.article.title,
       meta: [
         {
           hid: 'og:title',
           name: 'og:title',
-          content: `${prismicDOM.RichText.asText(this.title)}`,
+          content: this.article.title,
         },
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: `${prismicDOM.RichText.asText(this.title)}`,
+          content: this.article.title,
         },
         {
           hid: 'description',
           name: 'description',
-          content: this.summary,
+          content: this.article.description,
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: this.summary,
+          content: this.article.description,
         },
       ],
     }
   },
-  async asyncData({ $prismic, params, error }) {
+  async asyncData({ $content, params, error }) {
     try {
-      const result = await $prismic.api.getByUID('article', params.slug)
-      const article = result.data
-      const title = article.title
-      const summary = article.summary
-      const slices = article.body
-      return {
-        title,
-        summary,
-        published_date: new Date(result.first_publication_date),
-        slices,
-      }
+      const article = await $content('writing', params.slug).fetch()
+      return { article }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
@@ -97,11 +48,9 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-// Styles for the rich text areas are defined in layout.styl.
-// Scoped css doesn't apply to rich text elements
-// Some basic styles here
-article.article-page {
+<style lang="stylus">
+// Not using 'scoped' here, scoped css doesn't work correctly to elments within nuxt-content
+.article-page {
   margin-bottom: 50px;
   span.meta {
     font-size: 0.9em;
@@ -113,8 +62,55 @@ article.article-page {
       color: $tag-color-dark;
     }
   }
-  section.article-slice {
-    margin: 30px 0px;
+
+  h1 {
+    margin-bottom: 0px;
+    line-height: 1.3em;
+  }
+
+  code {
+    font-family: $base-mono-font-family;
+    background: $snow;
+    border-radius: 2px;
+    padding: 2px 5px;
+
+    @media only screen and (prefers-color-scheme: dark) {
+      background: $snow-dark;
+    }
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  div.embed {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-bottom: 20px;
+
+    iframe, object, embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+  pre {
+    white-space: pre;
+    margin-bottom: 20px;
+
+    code {
+      background: transparent;
+      font-family: $base-mono-font-family;
+
+      * {
+        font-family: $base-mono-font-family;
+      }
+    }
   }
 }
 </style>
