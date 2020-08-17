@@ -66,6 +66,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
     '@nuxtjs/prismic',
+    '@nuxt/content',
     ['nuxt-fontawesome', {
       component: 'fa', 
       imports: [
@@ -90,6 +91,14 @@ export default {
     '@nuxtjs/eslint-module',
   ],
 
+  content: {
+    markdown: {
+      prism: {
+        theme: '@/assets/styles/prism-shades-of-purple.css'
+      }
+    }
+  },
+
   prismic: {
     endpoint: 'https://ramkumarshankar.cdn.prismic.io/api/v2',
     preview: process.env.NODE_ENV !== 'production' ? true : false
@@ -107,21 +116,25 @@ export default {
       const api = await Prismic.getApi(
         'https://ramkumarshankar.cdn.prismic.io/api/v2',
       )
-      const response = await api.query(
-        Prismic.Predicates.any('document.type', ['project', 'article']),
+      const projectsResponse = await api.query(
+        Prismic.Predicates.at('document.type', 'project'),
         {
           // keep page size large to get all documents
           pageSize: 100
         }
       )
-      const pages = response.results
-      return pages.map(page => {
-        if (page.type === 'project') {
-          return '/work/' + page.uid;
-        } else if (page.type === 'article') {
-          return '/writing/' + page.uid;
-        }
+      const projectPages = projectsResponse.results
+
+      const projectPaths =  projectPages.map(projectPage => {
+        return '/work/' + projectPage.uid;
       })
+
+      const { $content } = require('@nuxt/content')
+      const articles = await $content('writing').only(['slug']).fetch()
+      const articlePaths =  articles.map(article => {
+        return '/writing/' + article.slug;
+      })
+      return [...projectPaths, ...articlePaths]
     }
   },
 

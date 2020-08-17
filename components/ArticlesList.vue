@@ -4,10 +4,10 @@
       <span class="meta">{{
         $moment(article.published_date).format('Do MMMM YYYY')
       }}</span>
-      <nuxt-link :to="'/writing/' + article.uid">
-        <h2>{{ $prismic.asText(article.title) }}</h2>
+      <nuxt-link :to="'/writing/' + article.slug">
+        <h2>{{ article.title }}</h2>
       </nuxt-link>
-      <p>{{ article.summary }}</p>
+      <p>{{ article.description }}</p>
     </article>
   </section>
 </template>
