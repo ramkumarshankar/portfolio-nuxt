@@ -2,7 +2,7 @@
   <section class="articles-list">
     <article v-for="article in articles" :key="article.id">
       <span class="meta">{{
-        $moment(article.published_date).format('Do MMMM YYYY')
+        $moment(article.createdAt).format('Do MMMM YYYY')
       }}</span>
       <nuxt-link :to="'/writing/' + article.slug">
         <h2>{{ article.title }}</h2>

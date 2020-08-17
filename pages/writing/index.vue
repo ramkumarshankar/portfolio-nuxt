@@ -39,18 +39,11 @@ export default {
   },
   async asyncData({ $content, error }) {
     try {
-      const articles = await $content('writing').fetch()
-      const articlesList = []
-      articles.forEach((article) => {
-        articlesList.push({
-          slug: article.slug,
-          title: article.title,
-          description: article.description,
-          published_date: new Date(article.createdAt),
-        })
-      })
+      const articles = await $content('writing')
+        .only(['slug', 'title', 'description', 'createdAt'])
+        .fetch()
       return {
-        articles: articlesList,
+        articles,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
