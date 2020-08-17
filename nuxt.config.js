@@ -67,6 +67,7 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/prismic',
     '@nuxt/content',
+    // '@nuxtjs/feed',
     ['nuxt-fontawesome', {
       component: 'fa', 
       imports: [
