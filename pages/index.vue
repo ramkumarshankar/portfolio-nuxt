@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <main class="home">
     <Hero :headline="$prismic.asText(headline)" />
     <div class="container">
       <prismic-rich-text :field="projectsHeadline" class="headline" />
-      <div class="projects-section">
+      <section class="projects-section">
         <h3 class="small-header">My Work</h3>
         <section class="projects-grid">
           <projects-grid :projects="projects" />
@@ -13,7 +13,7 @@
             >All projects</nuxt-link
           >
         </div>
-      </div>
+      </section>
       <div class="headline">
         <prismic-rich-text :field="aboutHeadline" />
         <prismic-rich-text :field="aboutSubheading" />
@@ -30,10 +30,9 @@
           </a>
         </div>
       </div>
-      <!-- <contact-section :text="contactText"/> -->
       <contact-section :heading="contactHeading" :text="contactText" />
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -134,7 +133,7 @@ export default {
     margin-bottom: 50px;
   }
 
-  div.projects-section {
+  section.projects-section {
     padding-bottom: 30px;
 
     section.projects-grid {

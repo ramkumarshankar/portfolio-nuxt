@@ -1,10 +1,10 @@
 <template>
-  <div ref="hero" class="hero-section">
+  <section ref="hero" class="hero-section">
     <canvas id="heroCanvas"></canvas>
     <div class="container">
       <h1 class="hero-headline">{{ headline }}</h1>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.hero-section {
+section.hero-section {
   display: flex;
   flex-direction: column;
   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
