@@ -1,12 +1,12 @@
 <template>
-  <div class="contact-block">
+  <section class="contact-block">
     <div class="contact-heading">
       <h1>{{ $prismic.asText(heading) }}</h1>
       <prismic-rich-text :field="text" />
     </div>
     <img src="~/assets/images/undraw_mail_box.svg" />
     <contact-form />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-div.contact-block {
+section.contact-block {
   border: 2px solid darken($snow, 10);
   border-radius: 2px;
   background: $snow;
