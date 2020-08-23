@@ -131,6 +131,7 @@ div.about {
 
         span.awards-org, span.awards-year, span.speaking-event, span.speaking-year {
           justify-self: end;
+          text-align: right;
         }
       }
     }
