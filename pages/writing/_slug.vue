@@ -63,52 +63,65 @@ export default {
     }
   }
 
-  h1 {
-    margin-bottom: 0px;
-    line-height: 1.3em;
-  }
-
-  code {
-    font-family: $base-mono-font-family;
-    background: $snow;
-    border-radius: 2px;
-    padding: 2px 5px;
-
-    @media only screen and (prefers-color-scheme: dark) {
-      background: $snow-dark;
+  .nuxt-content {
+    margin-bottom: 50px;
+    h1 {
+      margin-bottom: 0px;
+      line-height: 1.3em;
+      a {
+        color: $text-color
+        @media only screen and (prefers-color-scheme: dark) {
+          color: $text-color-dark
+        }
+      }
+      svg {
+        margin-left: 10px;
+        width: 30px !important;
+      }
     }
-  }
-
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-
-  div.embed {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    margin-bottom: 20px;
-
-    iframe, object, embed {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100% !important;
-      height: 100% !important;
-    }
-  }
-  pre {
-    white-space: pre;
-    margin-bottom: 20px;
 
     code {
-      background: transparent;
       font-family: $base-mono-font-family;
+      background: $snow;
+      border-radius: 2px;
+      padding: 2px 5px;
 
-      * {
+      @media only screen and (prefers-color-scheme: dark) {
+        background: $snow-dark;
+      }
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    div.embed {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      margin-bottom: 20px;
+
+      iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+    pre {
+      white-space: pre;
+      margin-bottom: 20px;
+
+      code {
+        background: transparent;
         font-family: $base-mono-font-family;
+
+        * {
+          font-family: $base-mono-font-family;
+        }
       }
     }
   }

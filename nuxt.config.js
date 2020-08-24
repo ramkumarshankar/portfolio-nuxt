@@ -74,6 +74,10 @@ export default {
         {
           set: '@fortawesome/fontawesome-free-brands',
           icons: ['faTwitter', 'faGithub', 'faFacebook', 'faDribbble', 'faLinkedin']
+        },
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['faExternalLinkAlt']
         }
       ]
     }],
