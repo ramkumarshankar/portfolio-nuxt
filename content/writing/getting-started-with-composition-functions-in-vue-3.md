@@ -162,7 +162,7 @@ export default {
 </script>
 ```
 
-We import `useWebcam` and get the parameters by destructuring the object the composition function returns. The loadWebcam method is now called when the user clicks the button.
+We import `useWebcam` and get the parameters by destructuring the object the composition function returns. The `loadWebcam` method is now called when the user clicks the button.
 
 Next, note the use of another new Vue 3 reactivity API - `watchEffect`. This function will run whenever its dependencies change. In this example. the function has one dependency — `cameraAllowed`. For example, if the user allows camera access, we can navigate to a different view here.
 
