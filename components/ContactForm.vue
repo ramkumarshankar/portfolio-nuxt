@@ -8,7 +8,7 @@
   >
     <div class="form-input">
       <input type="hidden" name="form-name" value="contact" />
-      <div style="display: none;">
+      <div style="display: none">
         <label for="botfield">Don’t fill this out if you're human</label>
         <input id="botfield" type="text" name="botfield" />
       </div>

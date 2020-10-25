@@ -8,11 +8,7 @@
       <h1 class="page-headline">{{ $prismic.asText(title) }}</h1>
       <p>{{ $prismic.asText(description) }}</p>
       <div v-if="ctaTitle && ctaTitle.length !== 0" class="cta-section">
-        <prismic-link
-          :field="ctaLink"
-          class="cta_link"
-          style="margin-top: 100px;"
-        >
+        <prismic-link :field="ctaLink" class="cta_link">
           <span>{{ ctaTitle }}</span>
         </prismic-link>
       </div>
