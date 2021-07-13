@@ -118,6 +118,7 @@ export default {
       code {
         background: transparent;
         font-family: $base-mono-font-family;
+        padding: 0;
 
         * {
           font-family: $base-mono-font-family;
