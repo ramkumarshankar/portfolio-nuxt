@@ -15,6 +15,9 @@
           <nuxt-link :class="navTheme" to="/about">About</nuxt-link>
         </li>
         <li>
+          <a href="https://timeline.ramkumar.me/" :class="navTheme">Timeline</a>
+        </li>
+        <li>
           <nuxt-link
             :class="navTheme"
             class="secondary"
@@ -63,7 +66,7 @@ header {
   @media screen and (max-width: 800px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    width: 100% !important;
+    width: 100%;
   }
 
   @media screen and (max-width: 700px) {
@@ -90,6 +93,7 @@ header {
     font-size: 1.414em;
     font-weight: 500;
     margin-bottom: 20px;
+    margin-right: 50px;
   }
 
   nav {
@@ -107,7 +111,7 @@ header {
         }
 
         &:not(:last-child) {
-          padding-right: 30px;
+          padding-right: 20px;
         }
       }
 
