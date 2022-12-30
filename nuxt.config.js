@@ -69,11 +69,11 @@ export default {
     '@nuxt/content',
     // '@nuxtjs/feed',
     ['nuxt-fontawesome', {
-      component: 'fa', 
+      component: 'fa',
       imports: [
         {
           set: '@fortawesome/fontawesome-free-brands',
-          icons: ['faTwitter', 'faGithub', 'faFacebook', 'faDribbble', 'faLinkedin']
+          icons: ['faTwitter', 'faGithub', 'faFacebook', 'faDribbble', 'faLinkedin', 'faMastodon']
         },
         {
           set: '@fortawesome/free-solid-svg-icons',

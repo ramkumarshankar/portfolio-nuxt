@@ -3,6 +3,11 @@
     <div class="footer-inner">
       <ul class="icons-list">
         <li>
+          <a rel="me" :href="mastodonLink">
+            <fa :icon="['fab', 'mastodon']" alt="mastodon" />
+          </a>
+        </li>
+        <li>
           <a :href="twitterLink">
             <fa :icon="['fab', 'twitter']" alt="twitter" />
           </a>
@@ -42,6 +47,7 @@ export default {
       githubLink: 'https://github.com/ramkumarshankar',
       dribbbleLink: 'http://www.dribbble.com/ramkumarshankar',
       linkedinLink: 'https://www.linkedin.com/in/ramkumarshankar',
+      mastodonLink: 'https://mastodon.au/@ramkumarshankar',
     }
   },
 }
