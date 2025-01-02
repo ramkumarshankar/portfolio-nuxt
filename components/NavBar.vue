@@ -15,9 +15,6 @@
           <nuxt-link :class="navTheme" to="/about">About</nuxt-link>
         </li>
         <li>
-          <a href="https://timeline.ramkumar.me/" :class="navTheme">Timeline</a>
-        </li>
-        <li>
           <nuxt-link
             :class="navTheme"
             class="secondary"
