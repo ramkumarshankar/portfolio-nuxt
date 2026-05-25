@@ -1,0 +1,5 @@
+{
+  "compatibility_date": "2026-05-25",
+  "name": "portfolio-nuxt",
+  "pages_build_output_dir": "dist"
+}
